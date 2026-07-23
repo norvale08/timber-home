@@ -98,7 +98,7 @@
 </section>
 
 <!-- News Section -->
-<section class="section news-section">
+<section class="section">
     <div class="container">
         <div class="news-header">
             <h2 class="section-title">Новости</h2>
@@ -114,13 +114,15 @@
         <div class="news-carousel">
             <?php $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="news-card">
-                <div class="news-image">📰</div>
                 <div class="news-content">
                     <div class="news-title"><?php echo e($item['title']); ?></div>
                     <div class="news-description"><?php echo e($item['description']); ?></div>
                 </div>
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+        <div class="news-footer">
+            <a href="/news" class="news-all-link">Все новости</a>
         </div>
     </div>
 </section>
@@ -138,14 +140,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (prevBtn && nextBtn) {
             const scrollAmount = 318 + 24; // card width + gap
 
-            prevBtn.addEventListener('click', function() {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 productsCarousel.scrollBy({
                     left: -scrollAmount,
                     behavior: 'smooth'
                 });
             });
 
-            nextBtn.addEventListener('click', function() {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 productsCarousel.scrollBy({
                     left: scrollAmount,
                     behavior: 'smooth'
@@ -163,16 +167,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextBtn = newsHeader.querySelector('.carousel-nav button:last-child');
         
         if (prevBtn && nextBtn) {
-            const scrollAmount = 350 + 24; // card width + gap
+            const scrollAmount = 432 + 24; // card width + gap
 
-            prevBtn.addEventListener('click', function() {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 newsCarousel.scrollBy({
                     left: -scrollAmount,
                     behavior: 'smooth'
                 });
             });
 
-            nextBtn.addEventListener('click', function() {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 newsCarousel.scrollBy({
                     left: scrollAmount,
                     behavior: 'smooth'
