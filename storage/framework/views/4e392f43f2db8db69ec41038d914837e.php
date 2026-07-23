@@ -82,10 +82,15 @@
         <div class="catalog-grid">
             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="catalog-item">
-                <div class="catalog-icon"><?php echo e($category['icon']); ?></div>
-                <div class="catalog-title"><?php echo e($category['name']); ?></div>
-                <div class="catalog-description"><?php echo e($category['description']); ?></div>
-                <a href="/catalog/<?php echo e($category['slug']); ?>" class="catalog-link">Перейти →</a>
+                <div class="catalog-content">
+                    <div class="catalog-title"><?php echo e($category['name']); ?></div>
+                    <div class="catalog-description"><?php echo e($category['description']); ?></div>
+                    <a href="/catalog/<?php echo e($category['slug']); ?>" class="catalog-link">
+                        Перейти
+                        <img src="/images/arrow-right-fill.png" alt="Go" width="16" height="16">
+                    </a>
+                </div>
+                <div class="catalog-image"></div>
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
@@ -96,8 +101,15 @@
 <section class="section news-section">
     <div class="container">
         <div class="news-header">
-            <h2>Новости</h2>
-            <a href="/news" class="btn btn-outline">Все новости</a>
+            <h2 class="section-title">Новости</h2>
+            <div class="carousel-nav">
+                <button class="carousel-btn">
+                    <img src="/images/arrow-left.png" alt="Previous" width="24" height="24">
+                </button>
+                <button class="carousel-btn">
+                    <img src="/images/arrow-right.png" alt="Next" width="24" height="24">
+                </button>
+            </div>
         </div>
         <div class="news-carousel">
             <?php $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -115,26 +127,58 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.products-carousel');
-    const prevBtn = document.querySelector('.carousel-nav button:first-child');
-    const nextBtn = document.querySelector('.carousel-nav button:last-child');
+    // Products carousel
+    const productsCarousel = document.querySelector('.products-carousel');
+    const productsHeader = document.querySelector('.products-header');
+    
+    if (productsCarousel && productsHeader) {
+        const prevBtn = productsHeader.querySelector('.carousel-nav button:first-child');
+        const nextBtn = productsHeader.querySelector('.carousel-nav button:last-child');
+        
+        if (prevBtn && nextBtn) {
+            const scrollAmount = 318 + 24; // card width + gap
 
-    if (carousel && prevBtn && nextBtn) {
-        const scrollAmount = 318 + 24; // card width + gap
-
-        prevBtn.addEventListener('click', function() {
-            carousel.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
+            prevBtn.addEventListener('click', function() {
+                productsCarousel.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
             });
-        });
 
-        nextBtn.addEventListener('click', function() {
-            carousel.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
+            nextBtn.addEventListener('click', function() {
+                productsCarousel.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
             });
-        });
+        }
+    }
+
+    // News carousel
+    const newsCarousel = document.querySelector('.news-carousel');
+    const newsHeader = document.querySelector('.news-header');
+    
+    if (newsCarousel && newsHeader) {
+        const prevBtn = newsHeader.querySelector('.carousel-nav button:first-child');
+        const nextBtn = newsHeader.querySelector('.carousel-nav button:last-child');
+        
+        if (prevBtn && nextBtn) {
+            const scrollAmount = 350 + 24; // card width + gap
+
+            prevBtn.addEventListener('click', function() {
+                newsCarousel.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            nextBtn.addEventListener('click', function() {
+                newsCarousel.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+        }
     }
 });
 </script>
