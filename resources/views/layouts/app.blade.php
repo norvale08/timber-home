@@ -36,10 +36,20 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="/images/Логотип.png" alt="Логотип">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <img src="/images/Логотип.png" alt="Логотип">
+                    </div>
                 </div>
-                <div class="copyright">&copy; {{ date('Y') }} Timber Home. Все права защищены.</div>
+                <div class="footer-divider"></div>
+                <div class="footer-bottom">
+                    <div class="footer-links">
+                        <div class="copyright">&copy; 2025, «Название компании»</div>
+                        <div class="copyleft">Политика конфиденциальности</div>
+                        <div class="copyleft">Реквизиты</div>
+                    </div>
+                    <div class="copyleft">Разработано в Вятка IT</div>
+                </div>
             </div>
         </div>
     </footer>

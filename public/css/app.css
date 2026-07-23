@@ -107,17 +107,20 @@ main {
 }
 
 footer {
-    background-color: #fff;
-    color: #000;
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 3rem;
-    border-top: 1px solid #e5e7eb;
+    background-color: var(--bg-bg-secondary, hsla(0, 0%, 96%, 1));
+    color: var(--text-text-main, hsla(0, 0%, 0%, 1));
+    margin-top: 4rem;
 }
 
 .footer-content {
+    max-width: 1408px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-top {
+    padding: 2rem 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -128,12 +131,46 @@ footer {
 
 .footer-logo img {
     height: auto;
-    max-width: 150px;
+    max-width: 200px;
+}
+
+.footer-divider {
+    height: 1px;
+    background-color: var(--stroke-light, hsla(0, 0%, 0%, 0.1));
+    margin: 0;
+}
+
+.footer-bottom {
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
 .copyright {
-    font-size: 0.875rem;
-    opacity: 0.8;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: var(--text-text-main, hsla(0, 0%, 0%, 1));
+}
+
+.copyleft{
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: var(--text-text-caption, hsla(0, 0%, 0%, 0.4));
+    opacity: 1;
+    border-bottom: 1px dashed;
 }
 
 .btn {
