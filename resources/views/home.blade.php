@@ -35,22 +35,44 @@
 <!-- Products Section -->
 <section class="section">
     <div class="container">
-        <h2 class="section-title">Товары</h2>
+        <div class="products-header">
+            <h2 class="section-title">Товары</h2>
+            <div class="carousel-nav">
+                <button class="carousel-btn">
+                    <img src="/images/arrow-left.png" alt="Previous" width="24" height="24">
+                </button>
+                <button class="carousel-btn">
+                    <img src="/images/arrow-right.png" alt="Next" width="24" height="24">
+                </button>
+            </div>
+        </div>
         <div class="products-carousel">
             @foreach($products as $product)
             <div class="product-card">
-                <div class="product-image">🪵</div>
+                <div class="product-image">
+                    <span class="product-badge new">NEW</span>
+                </div>
                 <div class="product-info">
+                    <div class="product-stock">В наличии</div>
                     <div class="product-name">{{ $product['name'] }}</div>
-                    <div class="product-price">{{ $product['price'] }} P</div>
-                    <button class="btn-add-cart">В корзину</button>
+                    <div class="product-price">
+                        <span class="current-price">{{ $product['price'] }} P</span>
+                        <span class="old-price">{{ $product['old_price'] ?? 1600 }} P</span>
+                    </div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn">-</button>
+                            <span class="qty-value">1</span>
+                            <button class="qty-btn">+</button>
+                        </div>
+                        <button class="btn-add-cart">
+                            <img src="/images/cart-icon-white.png" alt="Cart" width="20" height="20">
+                            В корзину
+                        </button>
+                    </div>
                 </div>
             </div>
             @endforeach
-        </div>
-        <div class="carousel-nav">
-            <button class="carousel-btn">←</button>
-            <button class="carousel-btn">→</button>
         </div>
     </div>
 </section>
@@ -90,10 +112,32 @@
             </div>
             @endforeach
         </div>
-        <div class="carousel-nav">
-            <button class="carousel-btn">←</button>
-            <button class="carousel-btn">→</button>
-        </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.products-carousel');
+    const prevBtn = document.querySelector('.carousel-nav button:first-child');
+    const nextBtn = document.querySelector('.carousel-nav button:last-child');
+
+    if (carousel && prevBtn && nextBtn) {
+        const scrollAmount = 318 + 24; // card width + gap
+
+        prevBtn.addEventListener('click', function() {
+            carousel.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        nextBtn.addEventListener('click', function() {
+            carousel.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
+</script>
 @endsection
