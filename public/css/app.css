@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    max-width: 1600px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
 }
@@ -55,7 +55,6 @@ header::after {
     display: flex;
     align-items: center;
     gap: 3rem;
-    margin-left: 40px;
 }
 
 .logo {

@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextBtn = productsHeader.querySelector('.carousel-nav button:last-child');
         
         if (prevBtn && nextBtn) {
-            const scrollAmount = 318 + 24; // card width + gap
+            const scrollAmount = 267 + 17.6; // card width + gap
 
             prevBtn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextBtn = newsHeader.querySelector('.carousel-nav button:last-child');
         
         if (prevBtn && nextBtn) {
-            const scrollAmount = 432 + 24; // card width + gap
+            const scrollAmount = 362 + 17.6; // card width + gap
 
             prevBtn.addEventListener('click', function(e) {
                 e.preventDefault();

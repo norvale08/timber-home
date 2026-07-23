@@ -14,7 +14,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
-    margin-left: 40px;
 }
 
 .hero-text {
@@ -117,8 +116,6 @@
 
 .section {
     padding: 2rem 0;
-    max-width: 1508px;
-    margin: 0 auto;
 }
 
 .section-title {
@@ -159,8 +156,8 @@
 }
 
 .product-card {
-    flex: 0 0 318px;
-    width: 318px;
+    flex: 0 0 267px;
+    width: 267px;
     height: 411px;
     background: white;
     border: 1px solid #e5e7eb;
@@ -354,7 +351,7 @@
 }
 
 .catalog-item {
-    width: 660px;
+    width: 100%;
     height: 260px;
     background: var(--bg-bg-secondary, hsla(0, 0%, 96%, 1));
     border-radius: var(--desktop-br-control-L, 8px);
@@ -443,8 +440,8 @@
 }
 
 .news-card {
-    flex: 0 0 432px;
-    width: 432px;
+    flex: 0 0 362px;
+    width: 362px;
     height: 408px;
     border-radius: 12px;
     overflow: hidden;
@@ -528,7 +525,7 @@
 }
 
 .news-footer {
-    width: 1334px;
+    width: 100%;
     height: 72px;
     margin-top: 1rem;
     display: flex;
