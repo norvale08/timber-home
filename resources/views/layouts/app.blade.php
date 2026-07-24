@@ -85,6 +85,27 @@
             });
         }
 
+        document.querySelectorAll('.quantity-selector').forEach(function (selector) {
+            const minus = selector.querySelector('.qty-btn:first-of-type');
+            const plus = selector.querySelector('.qty-btn:last-of-type');
+            const value = selector.querySelector('.qty-value');
+            if (!minus || !plus || !value) return;
+
+            minus.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const qty = parseInt(value.textContent, 10) || 1;
+                if (qty > 1) value.textContent = qty - 1;
+            });
+
+            plus.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const qty = parseInt(value.textContent, 10) || 0;
+                value.textContent = qty + 1;
+            });
+        });
+
         window.openModal = openModal;
     });
     </script>

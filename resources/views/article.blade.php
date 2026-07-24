@@ -6,13 +6,11 @@
 <div class="article-page">
     <div class="container">
         <!-- Breadcrumbs -->
-        <div class="breadcrumbs">
-            <a href="/" class="breadcrumb-link">Главная</a>
-            <span class="breadcrumb-separator">></span>
-            <a href="/blog" class="breadcrumb-link">Блог</a>
-            <span class="breadcrumb-separator">></span>
-            <span class="breadcrumb-current">{{ $article['title'] }}</span>
-        </div>
+        <x-breadcrumbs :items="[
+            ['label' => 'Главная', 'url' => '/'],
+            ['label' => 'Блог', 'url' => '/blog'],
+            ['label' => $article['title']],
+        ]" />
 
         <!-- Article Title -->
         <h1 class="article-title">{{ $article['title'] }}</h1>

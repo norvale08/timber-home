@@ -37,41 +37,11 @@
     <div class="container">
         <div class="products-header">
             <h2 class="section-title">Товары</h2>
-            <div class="carousel-nav">
-                <button class="carousel-btn">
-                    <img src="/images/arrow-left.svg" alt="Previous" width="24" height="24">
-                </button>
-                <button class="carousel-btn">
-                    <img src="/images/arrow-right.svg" alt="Next" width="24" height="24">
-                </button>
-            </div>
+            <x-carousel-nav />
         </div>
         <div class="products-carousel">
             @foreach($products as $product)
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="product-badge new">NEW</span>
-                </div>
-                <div class="product-info">
-                    <div class="product-stock">В наличии</div>
-                    <div class="product-name">{{ $product['name'] }}</div>
-                    <div class="product-price">
-                        <span class="current-price">{{ $product['price'] }} P</span>
-                        <span class="old-price">{{ $product['old_price'] ?? 1600 }} P</span>
-                    </div>
-                    <div class="product-actions">
-                        <div class="quantity-selector">
-                            <button class="qty-btn">-</button>
-                            <span class="qty-value">1</span>
-                            <button class="qty-btn">+</button>
-                        </div>
-                        <button class="btn-add-cart">
-                            <img src="/images/cart-icon-white.png" alt="Cart" width="20" height="20">
-                            В корзину
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <x-product-card :product="$product" />
             @endforeach
         </div>
     </div>
@@ -83,17 +53,7 @@
         <h2 class="section-title">Каталог</h2>
         <div class="catalog-grid">
             @foreach($categories as $category)
-            <div class="catalog-item">
-                <div class="catalog-content">
-                    <div class="catalog-title">{{ $category['name'] }}</div>
-                    <div class="catalog-description">{{ $category['description'] }}</div>
-                    <a href="/catalog/{{ $category['slug'] }}" class="catalog-link">
-                        Перейти
-                        <img src="/images/arrow-right-fill.png" alt="Go" width="16" height="16">
-                    </a>
-                </div>
-                <div class="catalog-image"></div>
-            </div>
+            <x-catalog-card :category="$category" />
             @endforeach
         </div>
     </div>
@@ -104,14 +64,7 @@
     <div class="container">
         <div class="news-header">
             <h2 class="section-title">Новости</h2>
-            <div class="carousel-nav">
-                <button class="carousel-btn">
-                    <img src="/images/arrow-left.svg" alt="Previous" width="24" height="24">
-                </button>
-                <button class="carousel-btn">
-                    <img src="/images/arrow-right.svg" alt="Next" width="24" height="24">
-                </button>
-            </div>
+            <x-carousel-nav />
         </div>
         <div class="news-carousel">
             @foreach($news as $item)

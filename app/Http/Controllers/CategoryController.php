@@ -26,6 +26,14 @@ class CategoryController extends Controller
             ['name' => 'Имитация бруса', 'price' => '550', 'old_price' => '600', 'in_stock' => true, 'new' => false],
             ['name' => 'Брус еловый', 'price' => '900', 'old_price' => '1100', 'in_stock' => true, 'new' => false],
             ['name' => 'Доска пола', 'price' => '750', 'old_price' => null, 'in_stock' => true, 'new' => true],
+            ['name' => 'Брус клееный', 'price' => '2500', 'old_price' => '2800', 'in_stock' => true, 'new' => true],
+            ['name' => 'Брус лиственничный', 'price' => '3200', 'old_price' => '3500', 'in_stock' => true, 'new' => false],
+            ['name' => 'Брус профилированный', 'price' => '3800', 'old_price' => null, 'in_stock' => true, 'new' => false],
+            ['name' => 'Брус камерной сушки', 'price' => '4500', 'old_price' => '4900', 'in_stock' => true, 'new' => true],
+            ['name' => 'Доска террасная', 'price' => '5200', 'old_price' => null, 'in_stock' => true, 'new' => false],
+            ['name' => 'Планкен из лиственницы', 'price' => '6100', 'old_price' => '6700', 'in_stock' => true, 'new' => false],
+            ['name' => 'Клееная балка', 'price' => '7800', 'old_price' => null, 'in_stock' => true, 'new' => true],
+            ['name' => 'Комплект стропил', 'price' => '12500', 'old_price' => '14000', 'in_stock' => true, 'new' => false],
         ];
 
         $products = [];

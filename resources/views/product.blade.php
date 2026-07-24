@@ -6,13 +6,11 @@
 <div class="product-page">
     <div class="container">
         <!-- Breadcrumbs -->
-        <div class="breadcrumbs">
-            <a href="/" class="breadcrumb-link">Главная</a>
-            <span class="breadcrumb-separator">></span>
-            <a href="/catalog" class="breadcrumb-link">Каталог</a>
-            <span class="breadcrumb-separator">></span>
-            <span class="breadcrumb-current">{{ $product['name'] }}</span>
-        </div>
+        <x-breadcrumbs :items="[
+            ['label' => 'Главная', 'url' => '/'],
+            ['label' => 'Каталог', 'url' => '/catalog'],
+            ['label' => $product['name']],
+        ]" />
 
         <!-- Product Details -->
         <div class="product-details">
@@ -48,11 +46,7 @@
             <div class="product-info">
                 <h1 class="product-title">{{ $product['name'] }}</h1>
                 <div class="product-article">{{ $product['article'] }}</div>
-                @if($product['in_stock'] ?? true)
-                <div class="product-stock">В наличии</div>
-                @else
-                <div class="product-stock out-of-stock">Нет в наличии</div>
-                @endif
+                <x-stock-status :in-stock="$product['in_stock'] ?? true" />
 
                 <!-- Characteristics Table -->
                 <div class="product-characteristics">
@@ -84,11 +78,7 @@
 
                 <!-- Quantity and Actions -->
                 <div class="product-actions">
-                    <div class="quantity-selector">
-                        <button class="qty-btn">-</button>
-                        <span class="qty-value">1</span>
-                        <button class="qty-btn">+</button>
-                    </div>
+                    <x-quantity-selector />
                     <button class="btn-add-cart">
                         <img src="/images/cart-icon-white.png" alt="Cart" width="20" height="20">
                         В корзину
@@ -133,49 +123,11 @@
         <div class="similar-products">
             <div class="similar-header">
                 <h2 class="similar-title">Похожие товары</h2>
-                <div class="carousel-nav">
-                    <button class="carousel-btn">
-                        <img src="/images/arrow-left.svg" alt="Previous" width="24" height="24">
-                    </button>
-                    <button class="carousel-btn">
-                        <img src="/images/arrow-right.svg" alt="Next" width="24" height="24">
-                    </button>
-                </div>
+                <x-carousel-nav />
             </div>
             <div class="similar-carousel">
                 @foreach($similarProducts as $product)
-                <div class="product-card">
-                    <div class="product-image">
-                        @if($product['new'] ?? false)
-                        <span class="product-badge new">NEW</span>
-                        @endif
-                    </div>
-                    <div class="product-info">
-                        @if($product['in_stock'] ?? true)
-                        <div class="product-stock">В наличии</div>
-                        @else
-                        <div class="product-stock out-of-stock">Нет в наличии</div>
-                        @endif
-                        <div class="product-name">{{ $product['name'] }}</div>
-                        <div class="product-price">
-                            <span class="current-price">{{ $product['price'] }} P</span>
-                            @if($product['old_price'] ?? null)
-                            <span class="old-price">{{ $product['old_price'] }} P</span>
-                            @endif
-                        </div>
-                        <div class="product-actions">
-                            <div class="quantity-selector">
-                                <button class="qty-btn">-</button>
-                                <span class="qty-value">1</span>
-                                <button class="qty-btn">+</button>
-                            </div>
-                            <button class="btn-add-cart">
-                                <img src="/images/cart-icon-white.png" alt="Cart" width="20" height="20">
-                                В корзину
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <x-product-card :product="$product" />
                 @endforeach
             </div>
         </div>

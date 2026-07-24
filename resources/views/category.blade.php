@@ -6,13 +6,11 @@
 <div class="category-page">
     <div class="container">
         <!-- Breadcrumbs -->
-        <div class="breadcrumbs">
-            <a href="/" class="breadcrumb-link">Главная</a>
-            <span class="breadcrumb-separator">•</span>
-            <a href="/catalog" class="breadcrumb-link">Каталог</a>
-            <span class="breadcrumb-separator">•</span>
-            <span class="breadcrumb-current">{{ $categoryName }}</span>
-        </div>
+        <x-breadcrumbs :items="[
+            ['label' => 'Главная', 'url' => '/'],
+            ['label' => 'Каталог', 'url' => '/catalog'],
+            ['label' => $categoryName],
+        ]" separator="•" />
 
         <!-- Page Title -->
         <h1 class="category-page-title">{{ $categoryName }}</h1>
@@ -109,40 +107,7 @@
                 <!-- Product Grid -->
                 <div class="products-grid">
                     @foreach($products as $product)
-                    <a href="/product/{{ $product['id'] }}" class="product-card-link">
-                        <div class="product-card">
-                            <div class="product-image">
-                                @if($product['new'] ?? false)
-                                <span class="product-badge new">NEW</span>
-                                @endif
-                            </div>
-                            <div class="product-info">
-                                @if($product['in_stock'] ?? true)
-                                <div class="product-stock">В наличии</div>
-                                @else
-                                <div class="product-stock out-of-stock">Нет в наличии</div>
-                                @endif
-                                <div class="product-name">{{ $product['name'] }}</div>
-                                <div class="product-price">
-                                    <span class="current-price">{{ $product['price'] }} ₽</span>
-                                    @if($product['old_price'] ?? null)
-                                    <span class="old-price">{{ $product['old_price'] }} ₽</span>
-                                    @endif
-                                </div>
-                                <div class="product-actions">
-                                    <div class="quantity-selector">
-                                        <button class="qty-btn"><img src="/images/minus.png" alt="-"></button>
-                                        <span class="qty-value">1</span>
-                                        <button class="qty-btn"><img src="/images/plus.png" alt="+"></button>
-                                    </div>
-                                    <button class="btn-add-cart">
-                                        <img src="/images/cart-icon-white.png" alt="Cart" width="20" height="20">
-                                        В корзину
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    <x-product-card :product="$product" :link="'/product/' . $product['id']" />
                     @endforeach
                 </div>
 
@@ -230,27 +195,6 @@
 
 <script>
 (function () {
-    document.querySelectorAll('.quantity-selector').forEach(function (selector) {
-        const minus = selector.querySelector('.qty-btn:first-of-type');
-        const plus = selector.querySelector('.qty-btn:last-of-type');
-        const value = selector.querySelector('.qty-value');
-        if (!minus || !plus || !value) return;
-
-        minus.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            let qty = parseInt(value.textContent, 10) || 1;
-            if (qty > 1) value.textContent = qty - 1;
-        });
-
-        plus.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            let qty = parseInt(value.textContent, 10) || 0;
-            value.textContent = qty + 1;
-        });
-    });
-
     document.querySelectorAll('.filter-toggle').forEach(function (toggle) {
         toggle.addEventListener('click', function () {
             const section = toggle.closest('.filter-section');
