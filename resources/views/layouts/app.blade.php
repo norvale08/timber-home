@@ -18,7 +18,7 @@
                         <a href="/">Главная</a>
                         <a href="/catalog">Каталог</a>
                         <a href="/blog">Блог</a>
-                        <a href="/contacts">Контакты</a>
+                        <a href="#" onclick="openModal(); return false;">Контакты</a>
                     </nav>
                 </div>
                 <div class="cart-icon-box">
@@ -53,5 +53,40 @@
             </div>
         </div>
     </footer>
+
+    <x-contact-modal/>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('contactModal');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        function openModal() {
+            if (modal) {
+                modal.classList.add('show');
+            }
+        }
+
+        function closeModal() {
+            if (modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+
+        window.openModal = openModal;
+    });
+    </script>
 </body>
 </html>

@@ -110,8 +110,36 @@
     font-weight: 600;
 }
 
+.btn-hero button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 .btn-hero:hover {
     background-color: #333;
+}
+
+.btn-hero-secondary {
+    background-color: transparent;
+    border: 2px solid var(--text-text-main);
+}
+
+.btn-hero-secondary button {
+    color: var(--text-text-main);
+}
+
+.btn-hero-secondary:hover {
+    background-color: transparent;
+    border-color: #333;
+}
+
+.btn-hero-secondary:hover button {
+    color: #333;
 }
 
 .section {
@@ -421,8 +449,8 @@
 }
 
 .catalog-link img {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
 }
 
 .news-carousel {
@@ -487,7 +515,7 @@
 }
 
 .news-description {
-    width: 352px;
+    width: 332px;
     font-weight: 400;
     font-style: Regular;
     font-size: 16px;

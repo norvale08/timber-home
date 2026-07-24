@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="btn-hero">
-                    <a href="/catalog" >Подробнее</a>
+                    <a href="/catalog">Подробнее</a>
                 </div>
             </div>
         </div>
@@ -39,10 +39,10 @@
             <h2 class="section-title">Товары</h2>
             <div class="carousel-nav">
                 <button class="carousel-btn">
-                    <img src="/images/arrow-left.png" alt="Previous" width="24" height="24">
+                    <img src="/images/arrow-left.svg" alt="Previous" width="24" height="24">
                 </button>
                 <button class="carousel-btn">
-                    <img src="/images/arrow-right.png" alt="Next" width="24" height="24">
+                    <img src="/images/arrow-right.svg" alt="Next" width="24" height="24">
                 </button>
             </div>
         </div>
@@ -106,10 +106,10 @@
             <h2 class="section-title">Новости</h2>
             <div class="carousel-nav">
                 <button class="carousel-btn">
-                    <img src="/images/arrow-left.png" alt="Previous" width="24" height="24">
+                    <img src="/images/arrow-left.svg" alt="Previous" width="24" height="24">
                 </button>
                 <button class="carousel-btn">
-                    <img src="/images/arrow-right.png" alt="Next" width="24" height="24">
+                    <img src="/images/arrow-right.svg" alt="Next" width="24" height="24">
                 </button>
             </div>
         </div>

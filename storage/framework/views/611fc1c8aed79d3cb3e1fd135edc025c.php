@@ -18,7 +18,7 @@
                         <a href="/">Главная</a>
                         <a href="/catalog">Каталог</a>
                         <a href="/blog">Блог</a>
-                        <a href="/contacts">Контакты</a>
+                        <a href="#" onclick="openModal(); return false;">Контакты</a>
                     </nav>
                 </div>
                 <div class="cart-icon-box">
@@ -53,6 +53,60 @@
             </div>
         </div>
     </footer>
+
+    <?php if (isset($component)) { $__componentOriginal733eb5874b0445fe3ae6962156b571ec = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal733eb5874b0445fe3ae6962156b571ec = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.contact-modal','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('contact-modal'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal733eb5874b0445fe3ae6962156b571ec)): ?>
+<?php $attributes = $__attributesOriginal733eb5874b0445fe3ae6962156b571ec; ?>
+<?php unset($__attributesOriginal733eb5874b0445fe3ae6962156b571ec); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal733eb5874b0445fe3ae6962156b571ec)): ?>
+<?php $component = $__componentOriginal733eb5874b0445fe3ae6962156b571ec; ?>
+<?php unset($__componentOriginal733eb5874b0445fe3ae6962156b571ec); ?>
+<?php endif; ?>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('contactModal');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        function openModal() {
+            if (modal) {
+                modal.classList.add('show');
+            }
+        }
+
+        function closeModal() {
+            if (modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+
+        window.openModal = openModal;
+    });
+    </script>
 </body>
 </html>
 <?php /**PATH D:\GIT\timber-home\resources\views/layouts/app.blade.php ENDPATH**/ ?>
