@@ -3,7 +3,6 @@
 @section('content')
 <link rel="stylesheet" href="/css/home.css">
 
-<!-- Hero Section -->
 <section class="hero">
     <div class="container">
         <div class="hero-content">
@@ -32,7 +31,6 @@
     </div>
 </section>
 
-<!-- Products Section -->
 <section class="section">
     <div class="container">
         <div class="products-header">
@@ -47,7 +45,6 @@
     </div>
 </section>
 
-<!-- Catalog Section -->
 <section class="section">
     <div class="container">
         <h2 class="section-title">Каталог</h2>
@@ -59,7 +56,6 @@
     </div>
 </section>
 
-<!-- News Section -->
 <section class="section">
     <div class="container">
         <div class="news-header">
@@ -79,7 +75,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Products carousel
     const productsCarousel = document.querySelector('.products-carousel');
     const productsHeader = document.querySelector('.products-header');
     
@@ -88,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextBtn = productsHeader.querySelector('.carousel-nav button:last-child');
         
         if (prevBtn && nextBtn) {
-            const scrollAmount = 267 + 17.6; // card width + gap
+            const scrollAmount = 267 + 17.6;
 
             prevBtn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -108,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // News carousel
     const newsCarousel = document.querySelector('.news-carousel');
     const newsHeader = document.querySelector('.news-header');
 
@@ -117,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextBtn = newsHeader.querySelector('.carousel-nav button:last-child');
 
         if (prevBtn && nextBtn) {
-            const scrollAmount = 352 + 17.6; // card width + gap
+            const scrollAmount = 352 + 17.6;
 
             prevBtn.addEventListener('click', function(e) {
                 e.preventDefault();

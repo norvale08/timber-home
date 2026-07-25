@@ -5,18 +5,15 @@
 
 <div class="category-page">
     <div class="container">
-        <!-- Breadcrumbs -->
         <x-breadcrumbs :items="[
             ['label' => 'Главная', 'url' => '/'],
             ['label' => 'Каталог', 'url' => '/catalog'],
             ['label' => $categoryName],
         ]" separator="•" />
 
-        <!-- Page Title -->
         <h1 class="category-page-title">{{ $categoryName }}</h1>
 
         <div class="category-content">
-            <!-- Filters Sidebar -->
             <aside class="filters-sidebar">
                 @foreach($filters as $filter)
                 <div class="filter-section">
@@ -80,16 +77,13 @@
                 @endforeach
             </aside>
 
-            <!-- Products Section -->
             <main class="products-main">
-                <!-- Sort and View Options -->
                 <div class="products-header">
                     <div class="sort-options">
                         <span class="sort-label">Сортировка:</span>
                         <select class="sort-select" onchange="location.href = '?sort=' + this.value + '&per_page={{ $perPage }}&price_min={{ $priceMin }}&price_max={{ $priceMax }}';">
                             <option value="default" {{ $sort === 'default' ? 'selected' : '' }}>По умолчанию</option>
                             <option value="price" {{ in_array($sort, ['price','price_asc']) ? 'selected' : '' }}>По цене</option>
-                            <!-- <option value="price_desc" {{ $sort === 'price_desc' ? 'selected' : '' }}>По цене (убывание)</option> -->
                             <option value="name" {{ $sort === 'name' ? 'selected' : '' }}>По названию</option>
                         </select>
                     </div>
@@ -104,14 +98,12 @@
                     </div>
                 </div>
 
-                <!-- Product Grid -->
                 <div class="products-grid">
                     @foreach($products as $product)
                     <x-product-card :product="$product" :link="'/product/' . $product['id']" />
                     @endforeach
                 </div>
 
-                <!-- Pagination -->
                 <div class="pagination">
                     @if($currentPage > 1)
                     <a href="{{ request()->fullUrlWithQuery(['page' => $currentPage - 1]) }}" class="pagination-btn pagination-prev">

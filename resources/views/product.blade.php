@@ -5,16 +5,13 @@
 
 <div class="product-page">
     <div class="container">
-        <!-- Breadcrumbs -->
         <x-breadcrumbs :items="[
             ['label' => 'Главная', 'url' => '/'],
             ['label' => 'Каталог', 'url' => '/catalog'],
             ['label' => $product['name']],
         ]" />
 
-        <!-- Product Details -->
         <div class="product-details">
-            <!-- Product Gallery -->
             <div class="product-gallery">
                 <div class="gallery-main">
                     <div class="gallery-image">
@@ -42,7 +39,6 @@
                 </div>
             </div>
 
-            <!-- Product Info -->
             <div class="product-info product-summary">
                 <div class="product-header">
                     <div class="product-meta">
@@ -56,7 +52,6 @@
                     <p class="product-description">{{ $product['description'] }}</p>
                 </div>
 
-                <!-- Characteristics Table -->
                 <div class="product-characteristics">
                     @foreach($product['characteristics'] as $char)
                     <div class="characteristic-row">
@@ -66,7 +61,6 @@
                     @endforeach
                 </div>
 
-                <!-- Property Selection -->
                 <div class="property-select">
                     <label class="property-label" for="propertySelect">Свойство</label>
                     <select class="property-dropdown" id="propertySelect">
@@ -76,7 +70,6 @@
                     </select>
                 </div>
 
-                <!-- Price -->
                 <div class="product-price">
                     <span class="current-price">{{ $product['price'] }} ₽</span>
                     @if($product['old_price'] ?? null)
@@ -84,7 +77,6 @@
                     @endif
                 </div>
 
-                <!-- Quantity and Actions -->
                 <div class="product-actions">
                     <div class="actions-row">
                         <x-quantity-selector />
@@ -98,7 +90,6 @@
             </div>
         </div>
 
-        <!-- Product Tabs -->
         <div class="product-tabs">
             <div class="tabs-header">
                 <button class="tab-btn active" data-tab="description">ОПИСАНИЕ</button>
@@ -131,7 +122,6 @@
             </div>
         </div>
 
-        <!-- Similar Products -->
         <div class="similar-products">
             <div class="similar-header">
                 <h2 class="similar-title">Похожие товары</h2>
@@ -148,7 +138,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Gallery navigation
     const galleryPrev = document.querySelector('.gallery-prev');
     const galleryNext = document.querySelector('.gallery-next');
     const galleryDots = document.querySelectorAll('.gallery-dot');
@@ -184,12 +173,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Similar products carousel
     const similarCarousel = document.querySelector('.similar-carousel');
     const carouselBtns = document.querySelectorAll('.similar-header .carousel-btn');
 
     if (similarCarousel) {
-        const scrollAmount = 283; // card width (267) + gap (16)
+        const scrollAmount = 283;
 
         carouselBtns.forEach(btn => {
             btn.addEventListener('click', function(e) {
