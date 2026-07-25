@@ -52,7 +52,17 @@ class CategoryController extends Controller
         $total = $products->total();
 
         $pages = [];
-        if ($totalPages <= 7) {
+        if ($totalPages == 6) {
+            if ($currentPage == 1) {
+                $pages = [1, 2, 3, '...', 6];
+            } elseif ($currentPage == 2 || $currentPage == 3) {
+                $pages = [1, 2, 3, 4, '...', 6];
+            } elseif ($currentPage == 4) {
+                $pages = [1, '...', 3, 4, 5, 6];
+            } else {
+                $pages = [1, '...', 4, 5, 6];
+            }
+        } elseif ($totalPages <= 5) {
             for ($i = 1; $i <= $totalPages; $i++) {
                 $pages[] = $i;
             }
