@@ -106,6 +106,146 @@
             });
         });
 
+        // Contact form validation and phone formatting
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('nameInput');
+        const phoneInput = document.getElementById('phoneInput');
+        const messageInput = document.getElementById('messageInput');
+        const consentCheckbox = document.getElementById('consentCheckbox');
+        const nameError = document.getElementById('nameError');
+        const phoneError = document.getElementById('phoneError');
+        const consentError = document.getElementById('consentError');
+        const messageCharCount = document.getElementById('messageCharCount');
+
+        // Phone number formatting
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 0) {
+                if (value[0] === '7' || value[0] === '8') {
+                    value = value.substring(1);
+                }
+                
+                let formatted = '+7';
+                if (value.length > 0) {
+                    formatted += ' (' + value.substring(0, 3);
+                }
+                if (value.length >= 3) {
+                    formatted += ') ' + value.substring(3, 6);
+                }
+                if (value.length >= 6) {
+                    formatted += '-' + value.substring(6, 8);
+                }
+                if (value.length >= 8) {
+                    formatted += '-' + value.substring(8, 10);
+                }
+                
+                e.target.value = formatted;
+            } else {
+                e.target.value = '';
+            }
+            
+            validateField(phoneInput, phoneError, validatePhone);
+        });
+
+        // Character count for message
+        messageInput.addEventListener('input', function(e) {
+            const currentLength = e.target.value.length;
+            const maxLength = e.target.getAttribute('maxlength');
+            messageCharCount.textContent = currentLength + '/' + maxLength;
+            
+            if (currentLength >= maxLength) {
+                messageCharCount.style.color = '#ef4444';
+            } else {
+                messageCharCount.style.color = '#6b7280';
+            }
+        });
+
+        // Real-time validation
+        nameInput.addEventListener('blur', function() {
+            validateField(nameInput, nameError, validateName);
+        });
+
+        phoneInput.addEventListener('blur', function() {
+            validateField(phoneInput, phoneError, validatePhone);
+        });
+
+        consentCheckbox.addEventListener('change', function() {
+            validateField(consentCheckbox, consentError, validateConsent);
+        });
+
+        // Validation functions
+        function validateName(value) {
+            if (!value || value.length < 2) {
+                return 'Имя должно содержать минимум 2 символа';
+            }
+            if (value.length > 50) {
+                return 'Имя не должно превышать 50 символов';
+            }
+            if (!/^[А-Яа-яA-Za-z\s]+$/.test(value)) {
+                return 'Имя может содержать только буквы';
+            }
+            return '';
+        }
+
+        function validatePhone(value) {
+            const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+            if (!value) {
+                return 'Введите номер телефона';
+            }
+            if (!phonePattern.test(value)) {
+                return 'Введите номер в формате +7 (XXX) XXX-XX-XX';
+            }
+            return '';
+        }
+
+        function validateConsent(checkbox) {
+            if (!checkbox.checked) {
+                return 'Необходимо согласие на обработку данных';
+            }
+            return '';
+        }
+
+        function validateField(input, errorElement, validationFn) {
+            const value = input.type === 'checkbox' ? input : input.value;
+            const error = validationFn(value);
+            
+            if (error) {
+                errorElement.textContent = error;
+                errorElement.classList.add('show');
+                if (input.type !== 'checkbox') {
+                    input.classList.add('invalid');
+                }
+                return false;
+            } else {
+                errorElement.textContent = '';
+                errorElement.classList.remove('show');
+                if (input.type !== 'checkbox') {
+                    input.classList.remove('invalid');
+                }
+                return true;
+            }
+        }
+
+        // Form submission
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const isNameValid = validateField(nameInput, nameError, validateName);
+                const isPhoneValid = validateField(phoneInput, phoneError, validatePhone);
+                const isConsentValid = validateField(consentCheckbox, consentError, validateConsent);
+                
+                if (isNameValid && isPhoneValid && isConsentValid) {
+                    // Form is valid, submit it
+                    alert('Форма успешно отправлена!');
+                    contactForm.reset();
+                    messageCharCount.textContent = '0/500';
+                    closeModal();
+                }
+            });
+        }
+
         window.openModal = openModal;
     });
     </script>

@@ -6,24 +6,28 @@
         <h2 class="modal-title">Оставьте заявку</h2>
         <p class="modal-subtitle">Мы свяжемся с Вами в ближайшее время</p>
 
-        <form class="modal-form">
+        <form class="modal-form" id="contactForm" novalidate>
             <div class="form-group">
                 <label class="form-label">Ваше имя</label>
-                <input type="text" class="form-input" placeholder="Введите имя" required>
+                <input type="text" class="form-input" id="nameInput" placeholder="Введите имя" required minlength="2" maxlength="50" pattern="[А-Яа-яA-Za-z\s]+">
+                <span class="form-error" id="nameError"></span>
             </div>
             <div class="form-group">
                 <label class="form-label">Телефон</label>
-                <input type="tel" class="form-input" placeholder="+7 (___) ___-__-__" required>
+                <input type="tel" class="form-input" id="phoneInput" placeholder="+7 (___) ___-__-__" required maxlength="18" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}">
+                <span class="form-error" id="phoneError"></span>
             </div>
             <div class="form-group">
                 <label class="form-label">Сообщение</label>
-                <textarea class="form-textarea" placeholder="Ваше сообщение" rows="4"></textarea>
+                <textarea class="form-textarea" id="messageInput" placeholder="Ваше сообщение" rows="4" maxlength="500"></textarea>
+                <span class="form-char-count" id="messageCharCount">0/500</span>
             </div>
             <div class="form-group checkbox-group">
                 <label class="checkbox-label">
-                    <input type="checkbox" class="form-checkbox" required>
+                    <input type="checkbox" class="form-checkbox" id="consentCheckbox" required>
                     <span>Даю согласие на обработку персональных данных</span>
                 </label>
+                <span class="form-error" id="consentError"></span>
             </div>
             <button type="submit" class="modal-submit">Отправить</button>
         </form>
