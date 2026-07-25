@@ -118,33 +118,55 @@
         const messageCharCount = document.getElementById('messageCharCount');
 
         // Phone number formatting
-        phoneInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            
-            if (value.length > 0) {
-                if (value[0] === '7' || value[0] === '8') {
-                    value = value.substring(1);
-                }
-                
-                let formatted = '+7';
-                if (value.length > 0) {
-                    formatted += ' (' + value.substring(0, 3);
-                }
-                if (value.length >= 3) {
-                    formatted += ') ' + value.substring(3, 6);
-                }
-                if (value.length >= 6) {
-                    formatted += '-' + value.substring(6, 8);
-                }
-                if (value.length >= 8) {
-                    formatted += '-' + value.substring(8, 10);
-                }
-                
-                e.target.value = formatted;
-            } else {
-                e.target.value = '';
+        function formatPhoneNumber(value) {
+            let digits = value.replace(/\D/g, '');
+
+            if (digits.length === 0) {
+                return '';
             }
-            
+
+            if (digits[0] === '7' || digits[0] === '8') {
+                digits = digits.substring(1);
+            }
+
+            let formatted = '+7';
+            if (digits.length > 0) {
+                formatted += ' (' + digits.substring(0, 3);
+            }
+            if (digits.length >= 3) {
+                formatted += ') ' + digits.substring(3, 6);
+            }
+            if (digits.length >= 6) {
+                formatted += '-' + digits.substring(6, 8);
+            }
+            if (digits.length >= 8) {
+                formatted += '-' + digits.substring(8, 10);
+            }
+
+            return formatted;
+        }
+
+        phoneInput.addEventListener('input', function(e) {
+            const oldValue = e.target.value;
+            const oldCursor = e.target.selectionStart;
+            const oldDigitsBeforeCursor = oldValue.substring(0, oldCursor).replace(/\D/g, '').length;
+
+            const newValue = formatPhoneNumber(e.target.value);
+            e.target.value = newValue;
+
+            let newCursor = newValue.length;
+            let digitsCount = 0;
+            for (let i = 0; i < newValue.length; i++) {
+                if (/\d/.test(newValue[i])) {
+                    digitsCount++;
+                }
+                if (digitsCount >= oldDigitsBeforeCursor) {
+                    newCursor = i + 1;
+                    break;
+                }
+            }
+
+            e.target.setSelectionRange(newCursor, newCursor);
             validateField(phoneInput, phoneError, validatePhone);
         });
 

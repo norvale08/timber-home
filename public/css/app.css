@@ -218,56 +218,68 @@ footer {
 
 .modal-content {
     background-color: #fff;
-    border-radius: 16px;
-    padding: 40px;
-    width: 100%;
-    max-width: 480px;
+    border-radius: 24px;
+    padding: 40px 40px;
+    width: 496px;
+    height: 634px;
     position: relative;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .modal-close {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: transparent;
-    font-size: 28px;
+    top: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #e5e7eb;
+    background: white;
     cursor: pointer;
-    color: #9ca3af;
+    color: #374151;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s;
+    border-radius: 12px;
+    transition: background-color 0.3s, border-color 0.3s;
+    padding: 0;
 }
 
 .modal-close:hover {
     background-color: #f3f4f6;
-    color: #4b5563;
+    border-color: #d1d5db;
+}
+
+.modal-close img {
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
 }
 
 .modal-title {
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 36px;
-    color: #111827;
-    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    color: #000000;
+    margin-bottom: 8px;
 }
 
 .modal-subtitle {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 24px;
     color: #6b7280;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 .modal-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
+    text-align: left;
 }
 
 .form-group {
@@ -275,24 +287,22 @@ footer {
     flex-direction: column;
 }
 
-.form-label {
-    font-size: 14px;
-    line-height: 20px;
-    color: #374151;
-    font-weight: 500;
-    margin-bottom: 8px;
-}
-
 .form-input,
 .form-textarea {
-    padding: 14px 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    font-size: 15px;
+    padding: 16px 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    font-size: 16px;
     line-height: 24px;
     font-family: inherit;
-    background-color: #f9fafb;
+    background-color: #ffffff;
     transition: border-color 0.3s, background-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #9ca3af;
 }
 
 .form-input:focus,
@@ -303,7 +313,7 @@ footer {
 }
 
 .form-textarea {
-    resize: vertical;
+    resize: none;
     min-height: 100px;
 }
 
@@ -333,41 +343,83 @@ footer {
 }
 
 .checkbox-group {
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 4px;
 }
 
 .checkbox-label {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
     cursor: pointer;
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
     color: #6b7280;
 }
 
 .form-checkbox {
-    width: 18px;
-    height: 18px;
-    margin-top: 1px;
-    cursor: pointer;
-    accent-color: #1f2937;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkbox-custom {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.2s, border-color 0.2s;
+    background-color: white;
+}
+
+.checkbox-custom img {
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: white;
+}
+
+.form-checkbox:checked + .checkbox-custom {
+    background-color: #ffffff;
+    border-color: #d1d5db;
+}
+
+.form-checkbox:checked + .checkbox-custom img {
+    opacity: 1;
+    color: #000000;
+}
+
+.checkbox-text {
+    text-align: left;
+}
+
+.checkbox-link {
+    color: #9ca3af;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .modal-submit {
-    background-color: #1f2937;
+    background-color: #000000;
     color: white;
     border: none;
-    padding: 14px 24px;
-    border-radius: 10px;
+    padding: 18px 24px;
+    border-radius: 14px;
     font-size: 16px;
     line-height: 24px;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-top: 8px;
+    width: 100%;
 }
 
 .modal-submit:hover {
-    background-color: #374151;
+    background-color: #333333;
 }

@@ -19,26 +19,34 @@
                 <div class="gallery-main">
                     <div class="gallery-image">
                         @if($product['new'] ?? false)
-                        <span class="product-badge new">NEW</span>
+                        <div class="gallery-badges">
+                            <span class="product-badge new">NEW</span>
+                            <span class="product-badge new">NEW</span>
+                            <span class="product-badge new">NEW</span>
+                        </div>
                         @endif
                         @if($product['hit'] ?? false)
                         <span class="product-badge hit">HIT</span>
                         @endif
+                        <button type="button" class="favorite-btn" aria-label="В избранное">
+                            <img src="/images/heart.svg" alt="В избранное" width="20" height="20">
+                        </button>
                     </div>
                     <div class="gallery-nav">
-                        <button class="gallery-btn gallery-prev">
-                            <img src="/images/arrow-left.svg" alt="Previous" width="24" height="24">
+                        <button class="gallery-btn gallery-prev" aria-label="Предыдущее">
+                            <img src="/images/arrow-left.svg" alt="" width="24" height="24">
                         </button>
-                        <button class="gallery-btn gallery-next">
-                            <img src="/images/arrow-right.svg" alt="Next" width="24" height="24">
+                        <button class="gallery-btn gallery-next" aria-label="Следующее">
+                            <img src="/images/arrow-right.svg" alt="" width="24" height="24">
                         </button>
                     </div>
                 </div>
                 <div class="gallery-dots">
-                    <button class="gallery-dot active" data-index="0"></button>
-                    <button class="gallery-dot" data-index="1"></button>
-                    <button class="gallery-dot" data-index="2"></button>
-                    <button class="gallery-dot" data-index="3"></button>
+                    <button class="gallery-dot active" data-index="0" aria-label="Слайд 1"></button>
+                    <button class="gallery-dot" data-index="1" aria-label="Слайд 2"></button>
+                    <button class="gallery-dot" data-index="2" aria-label="Слайд 3"></button>
+                    <button class="gallery-dot" data-index="3" aria-label="Слайд 4"></button>
+                    <button class="gallery-dot" data-index="4" aria-label="Слайд 5"></button>
                 </div>
             </div>
 
@@ -209,6 +217,19 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(tabId).classList.add('active');
         });
     });
+
+    const favoriteBtn = document.querySelector('.favorite-btn');
+    if (favoriteBtn) {
+        favoriteBtn.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            this.classList.toggle('active');
+            if (this.classList.contains('active')) {
+                img.src = '/images/heart-fill.svg';
+            } else {
+                img.src = '/images/heart.svg';
+            }
+        });
+    }
 });
 </script>
 @endsection
