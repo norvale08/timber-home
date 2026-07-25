@@ -156,6 +156,11 @@
     margin-bottom: 2rem;
 }
 
+/* Home page specific products header override */
+.products-header {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
 
 .products-carousel {
     display: flex;
@@ -218,4 +223,147 @@
     border-radius: 5px;
     background: var(--bg-bg-button-light, hsla(0, 0%, 95%, 1));
     color: #333;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 0;
+        min-height: auto;
+    }
+
+    .hero-content {
+        gap: 1.5rem;
+    }
+
+    .hero-text h1 {
+        font-size: 36px;
+        line-height: 44px;
+        width: 100%;
+        height: auto;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+        line-height: 24px;
+        width: 100%;
+        height: auto;
+    }
+
+    .hero-features {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .feature-item {
+        max-width: 100%;
+    }
+
+    .btn-hero {
+        width: 100%;
+        height: 56px;
+    }
+
+    .section {
+        padding: 1.5rem 0;
+    }
+
+    .section-title {
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 1.5rem;
+    }
+
+    .products-carousel {
+        gap: 1rem;
+    }
+
+    .news-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .news-footer {
+        height: 56px;
+        font-size: 14px;
+    }
+}
+
+/* Intermediate breakpoint for larger tablets */
+@media (max-width: 1024px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 430px) {
+    .hero-text h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .section-title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .btn-hero {
+        height: 48px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 375px) {
+    .hero-text h1 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .section-title {
+        font-size: 22px;
+        line-height: 28px;
+    }
+}
+
+@media (max-width: 320px) {
+    .hero-text h1 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .hero-text p {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .section-title {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .btn-hero {
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .feature-item p {
+        font-size: 13px;
+        line-height: 18px;
+    }
 }

@@ -21,13 +21,28 @@
                         <a href="#" onclick="openModal(); return false;">Контакты</a>
                     </nav>
                 </div>
-                <div class="cart-icon-box">
-                    <img src="/images/cart-icon.png" alt="Cart" >
+                <div class="header-right">
+                    <div class="cart-icon-box">
+                        <img src="/images/cart-icon.png" alt="Cart" >
+                    </div>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
             <div class="header-stripe"></div>
         </div>
     </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="/" onclick="closeMobileMenu();">Главная</a>
+        <a href="/catalog" onclick="closeMobileMenu();">Каталог</a>
+        <a href="/blog" onclick="closeMobileMenu();">Блог</a>
+        <a href="#" onclick="openModal(); closeMobileMenu(); return false;">Контакты</a>
+    </nav>
 
     <main>
         @yield('content')
@@ -269,6 +284,42 @@
         }
 
         window.openModal = openModal;
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+        function toggleMobileMenu() {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('show');
+            mobileMenuOverlay.classList.toggle('show');
+            document.body.style.overflow = mobileNav.classList.contains('show') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            mobileMenuBtn.classList.remove('active');
+            mobileNav.classList.remove('show');
+            mobileMenuOverlay.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        // Close menu on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileNav.classList.contains('show')) {
+                closeMobileMenu();
+            }
+        });
+
+        window.closeMobileMenu = closeMobileMenu;
     });
     </script>
 </body>

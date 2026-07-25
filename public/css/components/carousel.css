@@ -11,10 +11,12 @@
     height: 56px;
     padding: 0;
     border-radius: 8px;
-    border: 1px solid var(--stroke-light);
-    background: white;
+    border: 1px solid var(--stroke-light, #e5e7eb);
+    background: #fff;
     cursor: pointer;
     transition: background 0.3s;
+    flex-shrink: 0;
+    box-sizing: border-box;
 }
 
 .carousel-btn img {
@@ -25,4 +27,29 @@
 
 .carousel-btn:hover {
     background: #F9FAFB;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-btn img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .carousel-btn img {
+        width: 18px;
+        height: 18px;
+    }
 }

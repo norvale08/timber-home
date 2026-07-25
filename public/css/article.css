@@ -113,3 +113,135 @@
     left: -1rem;
     color: var(--text-text-main);
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .article-page {
+        padding: 0 0 2rem 0;
+    }
+
+    .article-label {
+        font-size: 11px;
+        margin-bottom: 0.5rem;
+    }
+
+    .article-title {
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 1.5rem;
+    }
+
+    .article-content {
+        max-width: 100%;
+    }
+
+    .article-intro {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .article-image-placeholder {
+        height: 300px;
+        border-radius: 8px;
+    }
+
+    .image-caption {
+        font-size: 11px;
+    }
+
+    .article-text {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .article-heading2 {
+        font-size: 22px;
+        line-height: 28px;
+        margin-top: 1.5rem;
+    }
+
+    .article-heading3 {
+        font-size: 18px;
+        line-height: 24px;
+        margin-top: 1.25rem;
+    }
+
+    .article-list li,
+    .article-bullet-list li {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 430px) {
+    .article-title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .article-image-placeholder {
+        height: 250px;
+    }
+
+    .article-heading2 {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .article-heading3 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+
+@media (max-width: 375px) {
+    .article-title {
+        font-size: 22px;
+        line-height: 28px;
+    }
+
+    .article-image-placeholder {
+        height: 220px;
+    }
+}
+
+@media (max-width: 320px) {
+    .article-title {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .article-label {
+        font-size: 10px;
+    }
+
+    .article-intro {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .article-text {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .article-image-placeholder {
+        height: 200px;
+    }
+
+    .article-heading2 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .article-heading3 {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .article-list li,
+    .article-bullet-list li {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}

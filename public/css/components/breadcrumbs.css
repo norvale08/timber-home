@@ -23,3 +23,28 @@
 .breadcrumb-current {
     color: var(--text-text-main, hsla(0, 0%, 0%, 1));
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .breadcrumbs {
+        font-size: 12px;
+        gap: 6px;
+    }
+
+    .breadcrumb-link,
+    .breadcrumb-current {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .breadcrumbs {
+        font-size: 11px;
+        gap: 4px;
+    }
+
+    .breadcrumb-link,
+    .breadcrumb-current {
+        font-size: 11px;
+    }
+}

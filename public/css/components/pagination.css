@@ -47,3 +47,44 @@
     padding: 0 12px;
     width: auto;
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .pagination {
+        gap: 0.25rem;
+    }
+
+    .pagination-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .pagination-ellipsis {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 430px) {
+    .pagination-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 320px) {
+    .pagination {
+        gap: 0.2rem;
+    }
+
+    .pagination-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .pagination-ellipsis {
+        font-size: 12px;
+    }
+}
