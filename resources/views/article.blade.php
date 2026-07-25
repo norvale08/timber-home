@@ -5,11 +5,13 @@
 
 <div class="article-page">
     <div class="container">
+        <span class="article-label">СТАТЬЯ</span>
+
         <!-- Breadcrumbs -->
         <x-breadcrumbs :items="[
             ['label' => 'Главная', 'url' => '/'],
             ['label' => 'Блог', 'url' => '/blog'],
-            ['label' => $article['title']],
+            ['label' => 'Название статьи'],
         ]" />
 
         <!-- Article Title -->
@@ -33,6 +35,12 @@
                     <h3 class="article-heading3">{{ $section['content'] }}</h3>
                 @elseif($section['type'] === 'list')
                     <ul class="article-list">
+                        @foreach($section['items'] as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                @elseif($section['type'] === 'bullet-list')
+                    <ul class="article-bullet-list">
                         @foreach($section['items'] as $item)
                             <li>{{ $item }}</li>
                         @endforeach
