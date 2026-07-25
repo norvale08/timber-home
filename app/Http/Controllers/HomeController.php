@@ -2,35 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Article;
+use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
     public function index(): View
     {
-        $products = [
-            ['name' => 'Брус сосновый', 'price' => '1000'],
-            ['name' => 'Брус дубовый', 'price' => '2500'],
-            ['name' => 'Доска обрезная', 'price' => '800'],
-            ['name' => 'Вагонка', 'price' => '450'],
-            ['name' => 'Блокхаус', 'price' => '650'],
-            ['name' => 'Имитация бруса', 'price' => '550'],
-        ];
+        $products = Product::take(6)->get()->map(function ($p) {
+            return [
+                'name' => $p->title,
+                'price' => number_format($p->price, 0, '', ' '),
+            ];
+        })->toArray();
 
-        $categories = [
-            ['name' => 'Дома из бруса', 'description' => 'Описание категории', 'icon' => '🏠', 'slug' => 'brus'],
-            ['name' => 'Бани', 'description' => 'Описание категории', 'icon' => '🛁', 'slug' => 'bani'],
-            ['name' => 'Гаражи', 'description' => 'Описание категории', 'icon' => '🚗', 'slug' => 'garazhi'],
-            ['name' => 'Беседки', 'description' => 'Описание категории', 'icon' => '🌳', 'slug' => 'besedki'],
-        ];
+        $categories = Config::get('catalog.categories');
 
-        $news = [
-            ['title' => 'Заголовок новости', 'description' => 'Место под короткое описание. Очевидно, что эффективный диаметp астатически притягивает космический поперечник'],
-            ['title' => 'Заголовок новости', 'description' => 'Место под короткое описание. Очевидно, что эффективный диаметp астатически притягивает космический поперечник'],
-            ['title' => 'Заголовок новости', 'description' => 'Место под короткое описание. Очевидно, что эффективный диаметp астатически притягивает космический поперечник'],
-            ['title' => 'Заголовок новости', 'description' => 'Место под короткое описание. Очевидно, что эффективный диаметp астатически притягивает космический поперечник'],
-            ['title' => 'Заголовок новости', 'description' => 'Место под короткое описание. Очевидно, что эффективный диаметp астатически притягивает космический поперечник'],
-        ];
+        $news = Article::take(5)->get()->map(function ($a) {
+            return [
+                'title' => $a->title,
+                'description' => substr($a->content, 0, 100) . '...',
+            ];
+        })->toArray();
 
         return view('home', [
             'title' => 'Timber Home - Деревянные дома',

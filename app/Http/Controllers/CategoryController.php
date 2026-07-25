@@ -2,69 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
     public function show(Request $request, string $slug): View
     {
-        $categoryName = match($slug) {
-            'brus' => 'Дома из бруса',
-            'bani' => 'Бани',
-            'garazhi' => 'Гаражи',
-            'besedki' => 'Беседки',
-            default => 'Категория',
-        };
+        $categoryNames = Config::get('catalog.category_names');
+        $categoryName = $categoryNames[$slug] ?? 'Категория';
 
-        $baseProducts = [
-            ['name' => 'Брус сосновый', 'price' => '1000', 'old_price' => '1200', 'in_stock' => true, 'new' => true],
-            ['name' => 'Брус дубовый', 'price' => '2500', 'old_price' => '3000', 'in_stock' => true, 'new' => false],
-            ['name' => 'Доска обрезная', 'price' => '800', 'old_price' => null, 'in_stock' => true, 'new' => false],
-            ['name' => 'Вагонка', 'price' => '450', 'old_price' => '500', 'in_stock' => true, 'new' => true],
-            ['name' => 'Блокхаус', 'price' => '650', 'old_price' => null, 'in_stock' => true, 'new' => false],
-            ['name' => 'Имитация бруса', 'price' => '550', 'old_price' => '600', 'in_stock' => true, 'new' => false],
-            ['name' => 'Брус еловый', 'price' => '900', 'old_price' => '1100', 'in_stock' => true, 'new' => false],
-            ['name' => 'Доска пола', 'price' => '750', 'old_price' => null, 'in_stock' => true, 'new' => true],
-            ['name' => 'Брус клееный', 'price' => '2500', 'old_price' => '2800', 'in_stock' => true, 'new' => true],
-            ['name' => 'Брус лиственничный', 'price' => '3200', 'old_price' => '3500', 'in_stock' => true, 'new' => false],
-            ['name' => 'Брус профилированный', 'price' => '3800', 'old_price' => null, 'in_stock' => true, 'new' => false],
-            ['name' => 'Брус камерной сушки', 'price' => '4500', 'old_price' => '4900', 'in_stock' => true, 'new' => true],
-            ['name' => 'Доска террасная', 'price' => '5200', 'old_price' => null, 'in_stock' => true, 'new' => false],
-            ['name' => 'Планкен из лиственницы', 'price' => '6100', 'old_price' => '6700', 'in_stock' => true, 'new' => false],
-            ['name' => 'Клееная балка', 'price' => '7800', 'old_price' => null, 'in_stock' => true, 'new' => true],
-            ['name' => 'Комплект стропил', 'price' => '12500', 'old_price' => '14000', 'in_stock' => true, 'new' => false],
-        ];
+        $query = Product::query();
 
-        $products = [];
-        for ($i = 1; $i <= 32; $i++) {
-            $base = $baseProducts[($i - 1) % count($baseProducts)];
-            $products[] = array_merge($base, ['id' => $i]);
-        }
-
-        $priceMin = (int) $request->query('price_min', 1200);
-        $priceMax = (int) $request->query('price_max', 252000);
+        $priceMin = (int) $request->query('price_min', 0);
+        $priceMax = (int) $request->query('price_max', 100000);
         $priceMin = max(0, $priceMin);
         $priceMax = max($priceMin, $priceMax);
-        $products = array_values(array_filter($products, fn ($p) => (int) $p['price'] >= $priceMin && (int) $p['price'] <= $priceMax));
+        $query->whereBetween('price', [$priceMin, $priceMax]);
 
         $sort = $request->query('sort', 'default');
         if ($sort === 'price' || $sort === 'price_asc') {
-            usort($products, fn ($a, $b) => (int) $a['price'] <=> (int) $b['price']);
+            $query->orderBy('price', 'asc');
         } elseif ($sort === 'price_desc') {
-            usort($products, fn ($a, $b) => (int) $b['price'] <=> (int) $a['price']);
+            $query->orderBy('price', 'desc');
         } elseif ($sort === 'name') {
-            usort($products, fn ($a, $b) => strcmp($a['name'], $b['name']));
+            $query->orderBy('title', 'asc');
         }
 
         $perPage = (int) $request->query('per_page', 12);
         $perPage = in_array($perPage, [12, 25, 50, 100]) ? $perPage : 12;
 
-        $total = count($products);
-        $totalPages = max(1, (int) ceil($total / $perPage));
-        $currentPage = min(max((int) $request->query('page', 1), 1), $totalPages);
-        $offset = ($currentPage - 1) * $perPage;
-        $paginatedProducts = array_slice($products, $offset, $perPage);
+        $products = $query->paginate($perPage, ['*'], 'page', $request->query('page', 1));
+
+        $paginatedProducts = $products->map(function ($p) {
+            return [
+                'id' => $p->id,
+                'name' => $p->title,
+                'price' => number_format($p->price, 0, '', ' '),
+                'old_price' => null,
+                'in_stock' => true,
+                'new' => false,
+            ];
+        })->toArray();
+
+        $totalPages = $products->lastPage();
+        $currentPage = $products->currentPage();
+        $total = $products->total();
 
         $pages = [];
         if ($totalPages <= 7) {
@@ -91,8 +76,8 @@ class CategoryController extends Controller
             [
                 'title' => 'Цена',
                 'type' => 'range',
-                'min' => 1200,
-                'max' => 252000,
+                'min' => 0,
+                'max' => 100000,
             ],
             [
                 'title' => 'Фильтр',

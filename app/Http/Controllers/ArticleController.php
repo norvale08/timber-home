@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
     public function show(int $id): View
     {
+        $articleModel = Article::findOrFail($id);
+
         $article = [
-            'id' => $id,
+            'id' => $articleModel->id,
             'category' => 'Категория',
-            'title' => 'Категория',
+            'title' => $articleModel->title,
             'content' => 'В целом, конечно, понимание сути ресурсосберегающих технологий прекрасно подходит для реализации системы обучения кадров, соответствующей насущным потребностям. Внезапно, независимые государства формируют глобальную экономическую сеть и при этом —  смешаны с не уникальными данными до степени совершенной неузнаваемости, из-за чего возрастает их статус бесполезности.',
             'imageCaption' => 'Фотография',
             'sections' => [

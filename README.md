@@ -1,46 +1,134 @@
-# Laravel Project with Blade Templates
+# Timber Home
 
-A Laravel project foundation set up with Blade templates.
+A Laravel-based e-commerce website for timber home construction materials, featuring a product catalog, blog, and category browsing.
+
+## Technologies Used
+
+- **PHP**: 8.2+
+- **Laravel**: 11.0
+- **Database**: SQLite
+- **Frontend**: Blade Templates
+- **CSS**: Custom styles
+
+## Requirements
+
+- PHP >= 8.2
+- Composer
+- SQLite extension enabled
 
 ## Installation
 
-1. Install dependencies:
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd timber-home
+```
+
+2. Install dependencies:
 ```bash
 composer install
 ```
 
-2. Copy environment file:
+3. Copy environment file:
 ```bash
-copy .env.example .env
+cp .env.example .env
 ```
 
-3. Generate application key:
+4. Generate application key:
 ```bash
 php artisan key:generate
 ```
 
-4. Configure your database in `.env` file
+5. Run migrations and seed the database:
+```bash
+php artisan migrate --seed
+```
 
-5. Run the development server:
+6. Start the development server:
 ```bash
 php artisan serve
 ```
 
+## Environment Setup
+
+The project uses SQLite by default. Ensure your `.env` file contains:
+
+```env
+DB_CONNECTION=sqlite
+```
+
+The SQLite database file will be automatically created at `database/database.sqlite` when you run migrations.
+
+## Running the Application
+
+The application will be available at `http://127.0.0.1:8000` after running `php artisan serve`.
+
+## Main Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | Home page with featured products and articles |
+| `/catalog` | Product catalog with categories |
+| `/catalog/{slug}` | Category page with product filtering |
+| `/product/{id}` | Individual product page |
+| `/blog` | Blog listing |
+| `/blog/{id}` | Individual article page |
+| `/about` | About page |
+
+## Database Structure
+
+### Products Table
+- `id` - Primary key
+- `title` - Product name
+- `slug` - URL-friendly identifier (unique)
+- `description` - Product description
+- `price` - Product price (decimal)
+- `image` - Product image URL (nullable)
+- `created_at`, `updated_at` - Timestamps
+
+### Articles Table
+- `id` - Primary key
+- `title` - Article title
+- `slug` - URL-friendly identifier (unique)
+- `content` - Article content
+- `image` - Article image URL (nullable)
+- `created_at`, `updated_at` - Timestamps
+
+## Seed Data
+
+The database is seeded with:
+- **12 Products**: Various timber construction materials (brus, doska, vagonka, etc.)
+- **6 Articles**: Blog posts about wooden construction and timber materials
+
 ## Project Structure
 
-- `app/Http/Controllers/` - Application controllers
-- `resources/views/` - Blade templates
-- `routes/` - Application routes
-- `public/` - Public entry point
+```
+app/
+├── Http/
+│   └── Controllers/     # Application controllers
+├── Models/              # Eloquent models (Product, Article)
 
-## Available Routes
+config/
+└── catalog.php          # Category configuration
 
-- `/` - Home page
-- `/about` - About page
+database/
+├── migrations/          # Database migrations
+└── seeders/             # Database seeders
 
-## Features
+resources/
+└── views/               # Blade templates
+```
 
-- Blade template engine
-- Layout inheritance
-- MVC architecture
-- Clean project structure
+## Architecture Notes
+
+- **Models**: Follow Laravel conventions with proper fillable fields and casts
+- **Controllers**: Thin controllers using Eloquent directly for data access
+- **Configuration**: Static category data stored in `config/catalog.php`
+- **No Service Layer**: Removed unnecessary abstraction - Eloquent is sufficient for this scope
+- **No Relationships**: Products and articles are standalone entities per current UI requirements
+
+## Development Notes
+
+- Categories are currently static (no database model needed for current UI)
+- Product filtering and pagination handled via Eloquent query builder
+- All Blade views and CSS remain unchanged from original Figma implementation
