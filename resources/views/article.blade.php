@@ -10,7 +10,7 @@
         <x-breadcrumbs :items="[
             ['label' => 'Главная', 'url' => '/'],
             ['label' => 'Блог', 'url' => '/blog'],
-            ['label' => 'Название статьи'],
+            ['label' => $article['title']],
         ]" />
 
         <h1 class="article-title">{{ $article['title'] }}</h1>

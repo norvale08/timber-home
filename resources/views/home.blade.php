@@ -68,7 +68,7 @@
             @endforeach
         </div>
         <div class="news-footer">
-            <a href="/news" class="news-all-link">Все новости</a>
+            <a href="/blog" class="news-all-link">Все новости</a>
         </div>
     </div>
 </section>

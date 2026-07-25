@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="/css/product.css?v={{ time() }}">
+<link rel="stylesheet" href="/css/product.css?v=2">
 
 <div class="product-page">
     <div class="container">

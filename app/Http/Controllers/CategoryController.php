@@ -31,8 +31,8 @@ class CategoryController extends Controller
             $query->orderBy('title', 'asc');
         }
 
-        $perPage = (int) $request->query('per_page', 12);
-        $perPage = in_array($perPage, [12, 25, 50, 100]) ? $perPage : 12;
+        $perPage = (int) $request->query('per_page', 6);
+        $perPage = in_array($perPage, [3, 6, 9, 12]) ? $perPage : 6;
 
         $products = $query->paginate($perPage, ['*'], 'page', $request->query('page', 1));
 

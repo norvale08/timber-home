@@ -90,10 +90,10 @@
                     <div class="items-per-page">
                         <span class="items-label">Выводить товаров:</span>
                         <select class="items-select" onchange="location.href = '?per_page=' + this.value + '&sort={{ $sort }}&price_min={{ $priceMin }}&price_max={{ $priceMax }}';">
+                            <option value="3" {{ $perPage == 3 ? 'selected' : '' }}>3</option>
+                            <option value="6" {{ $perPage == 6 ? 'selected' : '' }}>6</option>
+                            <option value="9" {{ $perPage == 9 ? 'selected' : '' }}>9</option>
                             <option value="12" {{ $perPage == 12 ? 'selected' : '' }}>12</option>
-                            <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
-                            <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50</option>
-                            <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
                         </select>
                     </div>
                 </div>
