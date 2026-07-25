@@ -73,7 +73,6 @@ The application will be available at `http://127.0.0.1:8000` after running `php 
 | `/product/{id}` | Individual product page |
 | `/blog` | Blog listing |
 | `/blog/{id}` | Individual article page |
-| `/about` | About page |
 
 ## Database Structure
 

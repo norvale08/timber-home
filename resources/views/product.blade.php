@@ -192,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Tab switching
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
 
