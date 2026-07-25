@@ -9,16 +9,7 @@
 
         <div class="blog-grid">
             @foreach($blogPosts as $post)
-            <a href="/blog/{{ $post['id'] }}" class="blog-card-link">
-                <div class="blog-card">
-                    <div class="blog-image"></div>
-                    <div class="blog-content">
-                        <div class="blog-date">{{ $post['date'] }}</div>
-                        <h3 class="blog-post-title">{{ $post['title'] }}</h3>
-                        <p class="blog-description">{{ $post['description'] }}</p>
-                    </div>
-                </div>
-            </a>
+            <x-blog-card :post="$post" :link="'/blog/' . $post['id']" />
             @endforeach
         </div>
 
@@ -39,4 +30,41 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const paginationBtns = document.querySelectorAll('.pagination-btn:not(.pagination-prev):not(.pagination-next)');
+    const prevBtn = document.querySelector('.pagination-prev');
+    const nextBtn = document.querySelector('.pagination-next');
+
+    function setActivePage(btn) {
+        paginationBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    paginationBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            setActivePage(this);
+        });
+    });
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            const activeBtn = document.querySelector('.pagination-btn.active');
+            if (activeBtn && activeBtn.previousElementSibling && !activeBtn.previousElementSibling.classList.contains('pagination-prev')) {
+                setActivePage(activeBtn.previousElementSibling);
+            }
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            const activeBtn = document.querySelector('.pagination-btn.active');
+            if (activeBtn && activeBtn.nextElementSibling && !activeBtn.nextElementSibling.classList.contains('pagination-next')) {
+                setActivePage(activeBtn.nextElementSibling);
+            }
+        });
+    }
+});
+</script>
 @endsection

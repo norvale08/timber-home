@@ -21,9 +21,10 @@
 
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 352px);
+    gap: 2rem;
     margin-bottom: 2rem;
+    justify-content: start;
 }
 
 .blog-card-link {
@@ -31,48 +32,60 @@
     color: inherit;
 }
 
-.blog-card {
-    background: white;
-    border: 1px solid var(--stroke-light);
-    border-radius: 12px;
+.news-card {
+    flex: 0 0 352px;
+    width: 352px;
+    height: 408px;
+    border-radius: var(--desktop-br-control-L, 8px);
     overflow: hidden;
+    position: relative;
+    background: hsla(0, 0%, 93%, 1);
     transition: box-shadow 0.3s;
 }
 
-.blog-card:hover {
+.news-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.96) 100%);
+    pointer-events: none;
+}
+
+.news-card:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.blog-image {
-    height: 200px;
-    background: var(--bg-bg-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.news-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    z-index: 1;
 }
 
-.blog-content {
-    padding: 1.5rem;
-}
-
-.blog-date {
-    font-size: 12px;
-    color: var(--text-text-caption);
-    margin-bottom: 0.5rem;
-}
-
-.blog-post-title {
-    font-weight: 600;
-    font-size: 18px;
+.news-title {
+    width: 352px;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 20px;
     line-height: 24px;
-    color: var(--text-text-main);
+    letter-spacing: -2%;
+    color: white;
     margin-bottom: 0.75rem;
+    opacity: 1;
 }
 
-.blog-description {
-    font-size: 14px;
-    line-height: 20px;
-    color: var(--text-text-caption);
+.news-description {
+    width: 332px;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
     margin: 0;
 }
 

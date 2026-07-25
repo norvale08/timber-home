@@ -68,12 +68,7 @@
         </div>
         <div class="news-carousel">
             @foreach($news as $item)
-            <div class="news-card">
-                <div class="news-content">
-                    <div class="news-title">{{ $item['title'] }}</div>
-                    <div class="news-description">{{ $item['description'] }}</div>
-                </div>
-            </div>
+            <x-blog-card :post="$item" />
             @endforeach
         </div>
         <div class="news-footer">
@@ -116,13 +111,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // News carousel
     const newsCarousel = document.querySelector('.news-carousel');
     const newsHeader = document.querySelector('.news-header');
-    
+
     if (newsCarousel && newsHeader) {
         const prevBtn = newsHeader.querySelector('.carousel-nav button:first-child');
         const nextBtn = newsHeader.querySelector('.carousel-nav button:last-child');
-        
+
         if (prevBtn && nextBtn) {
-            const scrollAmount = 362 + 17.6; // card width + gap
+            const scrollAmount = 352 + 17.6; // card width + gap
 
             prevBtn.addEventListener('click', function(e) {
                 e.preventDefault();

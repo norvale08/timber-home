@@ -455,7 +455,7 @@
 
 .news-carousel {
     display: flex;
-    gap: 1.1rem;
+    gap: 2rem;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 1rem 0;
@@ -468,10 +468,10 @@
 }
 
 .news-card {
-    flex: 0 0 362px;
-    width: 362px;
+    flex: 0 0 352px;
+    width: 352px;
     height: 408px;
-    border-radius: 12px;
+    border-radius: var(--desktop-br-control-L, 8px);
     overflow: hidden;
     position: relative;
     background: hsla(0, 0%, 93%, 1);
