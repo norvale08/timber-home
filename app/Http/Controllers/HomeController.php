@@ -13,8 +13,12 @@ class HomeController extends Controller
     {
         $products = Product::take(6)->get()->map(function ($p) {
             return [
+                'id' => $p->id,
                 'name' => $p->title,
                 'price' => number_format($p->price, 0, '', ' '),
+                'old_price' => $p->old_price ? number_format($p->old_price, 0, '', ' ') : null,
+                'in_stock' => true,
+                'new' => false,
             ];
         })->toArray();
 

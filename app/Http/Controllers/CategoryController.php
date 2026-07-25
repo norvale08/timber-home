@@ -41,7 +41,7 @@ class CategoryController extends Controller
                 'id' => $p->id,
                 'name' => $p->title,
                 'price' => number_format($p->price, 0, '', ' '),
-                'old_price' => null,
+                'old_price' => $p->old_price ? number_format($p->old_price, 0, '', ' ') : null,
                 'in_stock' => true,
                 'new' => false,
             ];

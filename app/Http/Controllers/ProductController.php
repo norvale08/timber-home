@@ -16,7 +16,7 @@ class ProductController extends Controller
             'name' => $productModel->title,
             'article' => 'Арт: ' . str_pad($productModel->id, 4, '0', STR_PAD_LEFT),
             'price' => number_format($productModel->price, 0, '', ' '),
-            'old_price' => null,
+            'old_price' => $productModel->old_price ? number_format($productModel->old_price, 0, '', ' ') : null,
             'in_stock' => true,
             'new' => true,
             'hit' => false,
@@ -41,7 +41,7 @@ class ProductController extends Controller
             return [
                 'name' => $p->title,
                 'price' => number_format($p->price, 0, '', ' '),
-                'old_price' => null,
+                'old_price' => $p->old_price ? number_format($p->old_price, 0, '', ' ') : null,
                 'in_stock' => true,
                 'new' => false,
             ];

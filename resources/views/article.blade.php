@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="/css/components/breadcrumbs.css">
 <link rel="stylesheet" href="/css/article.css">
 
 <div class="article-page">

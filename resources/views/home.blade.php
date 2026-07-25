@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="/css/components/product-card.css">
+<link rel="stylesheet" href="/css/components/catalog-card.css">
+<link rel="stylesheet" href="/css/components/carousel.css">
+<link rel="stylesheet" href="/css/components/news-card.css">
+<link rel="stylesheet" href="/css/components/products-header.css">
 <link rel="stylesheet" href="/css/home.css">
 
 <section class="hero">

@@ -18,31 +18,6 @@
     margin-bottom: 0.75rem;
 }
 
-.breadcrumbs {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    font-size: 14px;
-}
-
-.breadcrumb-link {
-    color: var(--text-text-caption);
-    text-decoration: none;
-    transition: opacity 0.3s;
-}
-
-.breadcrumb-link:hover {
-    opacity: 0.8;
-}
-
-.breadcrumb-separator {
-    color: var(--text-text-caption);
-}
-
-.breadcrumb-current {
-    color: var(--text-text-main);
-}
 
 .article-title {
     font-weight: 700;

@@ -1,0 +1,28 @@
+.carousel-nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid var(--stroke-light);
+    background: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.carousel-btn img {
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+}
+
+.carousel-btn:hover {
+    background: #F9FAFB;
+}

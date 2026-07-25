@@ -1,0 +1,47 @@
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.products-header .section-title {
+    margin-bottom: 0;
+    text-align: left;
+    margin-right: auto;
+}
+
+.sort-options,
+.items-per-page {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sort-label,
+.items-label {
+    font-size: 14px;
+    color: var(--text-text-caption);
+}
+
+.sort-select,
+.items-select {
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--text-text-main);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    min-width: unset;
+    padding: 0 20px 0 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23000' stroke-width='1.5' d='M3 6l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 16px 16px;
+}

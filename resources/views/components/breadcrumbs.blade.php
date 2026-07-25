@@ -1,4 +1,4 @@
-@props(['items', 'separator' => '>'])
+@props(['items', 'separator' => '•'])
 
 <div class="breadcrumbs">
     @foreach($items as $item)

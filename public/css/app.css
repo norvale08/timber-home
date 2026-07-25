@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 body {
@@ -11,9 +11,8 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1344px;
     margin: 0 auto;
-    padding: 0 40px;
 }
 
 header {
@@ -22,7 +21,6 @@ header {
     padding: 0;
     height: 120px;
     width: 100%;
-    /* position: relative; */
 }
 
 header::after {
