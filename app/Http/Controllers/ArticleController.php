@@ -15,7 +15,7 @@ class ArticleController extends Controller
             'id' => $articleModel->id,
             'category' => 'Строительство',
             'title' => $articleModel->title,
-            'content' => substr($articleModel->content, 0, 300),
+            'content' => mb_substr($articleModel->content, 0, 300, 'UTF-8'),
             'imageCaption' => 'Деревянный дом из бруса',
             'sections' => [
                 [

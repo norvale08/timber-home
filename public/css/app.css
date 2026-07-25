@@ -22,17 +22,11 @@ header {
     padding: 0;
     height: 120px;
     width: 100%;
-    position: relative;
+    /* position: relative; */
 }
 
 header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background-color: #e5e5e5;
+    display: none;
 }
 
 .header-stripe {

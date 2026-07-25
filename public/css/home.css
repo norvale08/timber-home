@@ -498,12 +498,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 24px;
+    padding: 22px;
     z-index: 1;
 }
 
 .news-title {
-    width: 352px;
+    width: 100%;
     font-weight: 700;
     font-style: Bold;
     font-size: 20px;
@@ -515,7 +515,7 @@
 }
 
 .news-description {
-    width: 332px;
+    width: 100%;
     font-weight: 400;
     font-style: Regular;
     font-size: 16px;

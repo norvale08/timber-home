@@ -23,7 +23,7 @@ class HomeController extends Controller
         $news = Article::take(5)->get()->map(function ($a) {
             return [
                 'title' => $a->title,
-                'description' => substr($a->content, 0, 100) . '...',
+                'description' => mb_substr($a->content, 0, 100, 'UTF-8') . '...',
             ];
         })->toArray();
 

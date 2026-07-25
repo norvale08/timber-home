@@ -5,8 +5,6 @@
 
 <div class="article-page">
     <div class="container">
-        <span class="article-label">СТАТЬЯ</span>
-
         <x-breadcrumbs :items="[
             ['label' => 'Главная', 'url' => '/'],
             ['label' => 'Блог', 'url' => '/blog'],

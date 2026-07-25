@@ -2,11 +2,39 @@
     --text-text-main: hsla(0, 0%, 0%, 1);
     --text-text-caption: hsla(0, 0%, 0%, 0.4);
     --bg-bg-secondary: hsla(0, 0%, 96%, 1);
+    --bg-bg-button-light: hsla(0, 0%, 95%, 1);
+    --bg-bg-button: hsla(0, 0%, 0%, 1);
     --stroke-light: #E5E7EB;
 }
 
 .blog-page {
-    padding: 2rem 0 4rem 0;
+    padding: 0 0 4rem 0;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 14px;
+}
+
+.breadcrumb-link {
+    color: var(--text-text-caption, hsla(0, 0%, 0%, 0.4));
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.breadcrumb-link:hover {
+    opacity: 0.8;
+}
+
+.breadcrumb-current {
+    color: var(--text-text-main, hsla(0, 0%, 0%, 1));
+}
+
+.breadcrumb-separator {
+    color: var(--text-text-caption, hsla(0, 0%, 0%, 0.4));
 }
 
 .blog-title {
@@ -63,12 +91,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 24px;
+    padding: 22px;
     z-index: 1;
 }
 
 .news-title {
-    width: 352px;
+    width: 100%;
     font-weight: 700;
     font-style: Bold;
     font-size: 20px;
@@ -80,7 +108,7 @@
 }
 
 .news-description {
-    width: 332px;
+    width: 100%;
     font-weight: 400;
     font-style: Regular;
     font-size: 16px;
@@ -109,17 +137,23 @@
     font-size: 14px;
     font-weight: 500;
     color: var(--text-text-main);
+    text-decoration: none;
     transition: background 0.3s;
 }
 
+.pagination-btn:disabled {
+    visibility: hidden;
+    cursor: default;
+}
+
 .pagination-btn:hover {
-    background: var(--bg-bg-secondary);
+    background: var(--bg-bg-button-light);
 }
 
 .pagination-btn.active {
-    background: var(--text-text-main);
+    background: var(--bg-bg-button);
     color: white;
-    border-color: var(--text-text-main);
+    border-color: var(--bg-bg-button);
 }
 
 .pagination-ellipsis {

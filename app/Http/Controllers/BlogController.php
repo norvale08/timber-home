@@ -15,7 +15,7 @@ class BlogController extends Controller
             return [
                 'id' => $a->id,
                 'title' => $a->title,
-                'description' => substr($a->content, 0, 100) . '...',
+                'description' => mb_substr($a->content, 0, 100, 'UTF-8') . '...',
                 'date' => $a->created_at->format('d.m.Y'),
             ];
         })->toArray();
