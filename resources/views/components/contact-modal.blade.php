@@ -8,13 +8,16 @@
         
         <form class="modal-form">
             <div class="form-group">
-                <input type="text" class="form-input" placeholder="Ваше имя" required>
+                <label class="form-label">Ваше имя</label>
+                <input type="text" class="form-input" placeholder="Введите имя" required>
             </div>
             <div class="form-group">
-                <input type="tel" class="form-input" placeholder="Телефон" required>
+                <label class="form-label">Телефон</label>
+                <input type="tel" class="form-input" placeholder="+7 (___) ___-__-__" required>
             </div>
             <div class="form-group">
-                <textarea class="form-textarea" placeholder="Сообщение" rows="4"></textarea>
+                <label class="form-label">Сообщение</label>
+                <textarea class="form-textarea" placeholder="Ваше сообщение" rows="4"></textarea>
             </div>
             <div class="form-group checkbox-group">
                 <label class="checkbox-label">

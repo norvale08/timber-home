@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="/css/product.css">
+<link rel="stylesheet" href="/css/product.css?v={{ time() }}">
 
 <div class="product-page">
     <div class="container">
@@ -34,34 +34,42 @@
                         </button>
                     </div>
                 </div>
-                <div class="gallery-thumbnails">
-                    <div class="thumbnail active"></div>
-                    <div class="thumbnail"></div>
-                    <div class="thumbnail"></div>
-                    <div class="thumbnail"></div>
+                <div class="gallery-dots">
+                    <button class="gallery-dot active" data-index="0"></button>
+                    <button class="gallery-dot" data-index="1"></button>
+                    <button class="gallery-dot" data-index="2"></button>
+                    <button class="gallery-dot" data-index="3"></button>
                 </div>
             </div>
 
             <!-- Product Info -->
-            <div class="product-info">
-                <h1 class="product-title">{{ $product['name'] }}</h1>
-                <div class="product-article">{{ $product['article'] }}</div>
-                <x-stock-status :in-stock="$product['in_stock'] ?? true" />
+            <div class="product-info product-summary">
+                <div class="product-header">
+                    <div class="product-meta">
+                        <span class="product-article">{{ $product['article'] }}</span>
+                        <span class="product-stock-badge {{ ($product['in_stock'] ?? true) ? '' : 'out-of-stock' }}">
+                            <span class="stock-dot"></span>
+                            {{ ($product['in_stock'] ?? true) ? 'В наличии' : 'Нет в наличии' }}
+                        </span>
+                    </div>
+                    <h1 class="product-title">{{ $product['name'] }}</h1>
+                    <p class="product-description">{{ $product['description'] }}</p>
+                </div>
 
                 <!-- Characteristics Table -->
                 <div class="product-characteristics">
                     @foreach($product['characteristics'] as $char)
                     <div class="characteristic-row">
-                        <span class="characteristic-name">{{ $char['name'] }}:</span>
+                        <span class="characteristic-name">{{ $char['name'] }}</span>
                         <span class="characteristic-value">{{ $char['value'] }}</span>
                     </div>
                     @endforeach
                 </div>
 
-                <!-- Color Selection -->
-                <div class="color-selection">
-                    <label class="color-label">Цвет:</label>
-                    <select class="color-select">
+                <!-- Property Selection -->
+                <div class="property-select">
+                    <label class="property-label" for="propertySelect">Свойство</label>
+                    <select class="property-dropdown" id="propertySelect">
                         @foreach($product['colors'] as $color)
                         <option {{ $color === $product['selected_color'] ? 'selected' : '' }}>{{ $color }}</option>
                         @endforeach
@@ -70,20 +78,22 @@
 
                 <!-- Price -->
                 <div class="product-price">
-                    <span class="current-price">{{ $product['price'] }} P</span>
+                    <span class="current-price">{{ $product['price'] }} ₽</span>
                     @if($product['old_price'] ?? null)
-                    <span class="old-price">{{ $product['old_price'] }} P</span>
+                    <span class="old-price">{{ $product['old_price'] }} ₽</span>
                     @endif
                 </div>
 
                 <!-- Quantity and Actions -->
                 <div class="product-actions">
-                    <x-quantity-selector />
-                    <button class="btn-add-cart">
-                        <img src="/images/cart-icon-white.png" alt="Cart" width="20" height="20">
-                        В корзину
-                    </button>
-                    <button class="btn-buy-one-click">Купить в 1 клик</button>
+                    <div class="actions-row">
+                        <x-quantity-selector />
+                        <button type="button" class="btn-add-cart">
+                            <img src="/images/cart-icon-white.png" alt="Cart" width="20" height="20">
+                            В корзину
+                        </button>
+                    </div>
+                    <button type="button" class="btn-buy-one-click">Купить в 1 клик</button>
                 </div>
             </div>
         </div>
@@ -98,7 +108,9 @@
             </div>
             <div class="tabs-content">
                 <div class="tab-content active" id="description">
-                    <p>{{ $product['description'] }}</p>
+                    @foreach($product['full_description'] as $paragraph)
+                    <p >{{ $paragraph }}</p>
+                    @endforeach
                 </div>
                 <div class="tab-content" id="characteristics">
                     <div class="characteristics-table">
@@ -136,6 +148,62 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Gallery navigation
+    const galleryPrev = document.querySelector('.gallery-prev');
+    const galleryNext = document.querySelector('.gallery-next');
+    const galleryDots = document.querySelectorAll('.gallery-dot');
+    let currentIndex = 0;
+    const totalImages = galleryDots.length;
+
+    function updateGallery(index) {
+        currentIndex = index;
+        if (currentIndex < 0) currentIndex = totalImages - 1;
+        if (currentIndex >= totalImages) currentIndex = 0;
+
+        galleryDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    if (galleryPrev) {
+        galleryPrev.addEventListener('click', function() {
+            updateGallery(currentIndex - 1);
+        });
+    }
+
+    if (galleryNext) {
+        galleryNext.addEventListener('click', function() {
+            updateGallery(currentIndex + 1);
+        });
+    }
+
+    galleryDots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            const index = parseInt(this.dataset.index);
+            updateGallery(index);
+        });
+    });
+
+    // Similar products carousel
+    const similarCarousel = document.querySelector('.similar-carousel');
+    const carouselBtns = document.querySelectorAll('.similar-header .carousel-btn');
+
+    if (similarCarousel) {
+        const scrollAmount = 283; // card width (267) + gap (16)
+
+        carouselBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const direction = this.dataset.direction;
+                if (direction === 'prev') {
+                    similarCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                } else if (direction === 'next') {
+                    similarCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            });
+        });
+    }
+
     // Tab switching
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
