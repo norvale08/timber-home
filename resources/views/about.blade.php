@@ -4,11 +4,11 @@
     <div class="content">
         <h1>{{ $title }}</h1>
         <p>{{ $description }}</p>
-        
+
         <div style="margin-top: 2rem;">
             <h2>About This Project</h2>
             <p>This is a Laravel project foundation set up with Blade templates. It includes:</p>
-            
+
             <ul style="margin-left: 1.5rem; margin-top: 1rem;">
                 <li>Basic project structure</li>
                 <li>Blade template engine</li>

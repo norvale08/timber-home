@@ -5,7 +5,7 @@
         <button class="modal-close" id="closeModal">&times;</button>
         <h2 class="modal-title">Оставьте заявку</h2>
         <p class="modal-subtitle">Мы свяжемся с Вами в ближайшее время</p>
-        
+
         <form class="modal-form">
             <div class="form-group">
                 <label class="form-label">Ваше имя</label>

@@ -77,11 +77,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const productsCarousel = document.querySelector('.products-carousel');
     const productsHeader = document.querySelector('.products-header');
-    
+
     if (productsCarousel && productsHeader) {
         const prevBtn = productsHeader.querySelector('.carousel-nav button:first-child');
         const nextBtn = productsHeader.querySelector('.carousel-nav button:last-child');
-        
         if (prevBtn && nextBtn) {
             const scrollAmount = 267 + 17.6;
 
