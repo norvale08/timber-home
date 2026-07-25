@@ -48,7 +48,6 @@
     width: auto;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .pagination {
         gap: 0.25rem;

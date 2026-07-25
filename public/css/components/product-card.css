@@ -158,7 +158,6 @@
     text-align: center;
 }
 
-/* Intermediate breakpoint for larger tablets */
 @media (max-width: 1024px) {
     .product-card {
         flex: 0 0 300px;
@@ -166,7 +165,6 @@
     }
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .product-card {
         flex: 0 0 280px;

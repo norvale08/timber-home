@@ -29,7 +29,6 @@
     background: #F9FAFB;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .carousel-btn {
         width: 40px;

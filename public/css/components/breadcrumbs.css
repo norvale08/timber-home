@@ -24,7 +24,6 @@
     color: var(--text-text-main, hsla(0, 0%, 0%, 1));
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .breadcrumbs {
         font-size: 12px;

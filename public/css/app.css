@@ -241,7 +241,6 @@ footer {
     color: white;
 }
 
-/* Modal Styles */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -472,7 +471,6 @@ footer {
     background-color: #333333;
 }
 
-/* Tablet and intermediate breakpoints */
 @media (max-width: 1280px) {
     .container {
         padding: 0 1.5rem;
@@ -489,7 +487,6 @@ footer {
     }
 }
 
-/* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .container {
         padding: 0 16px;
@@ -611,7 +608,6 @@ footer {
         font-size: 14px;
     }
 
-    /* Modal Mobile */
     .modal-content {
         width: calc(100% - 32px);
         max-width: 496px;

@@ -522,7 +522,6 @@
     display: none;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .product-page {
         padding: 0 0 40px;
@@ -634,7 +633,6 @@
     }
 }
 
-/* Intermediate breakpoint for larger tablets */
 @media (max-width: 1024px) {
     .product-details {
         flex-direction: column;

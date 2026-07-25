@@ -82,7 +82,6 @@
     margin: 0;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .news-carousel {
         gap: 1rem;
@@ -121,7 +120,6 @@
     }
 }
 
-/* Intermediate breakpoint for larger tablets */
 @media (max-width: 1024px) {
     .blog-grid {
         grid-template-columns: repeat(2, 1fr);

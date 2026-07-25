@@ -114,7 +114,6 @@
     color: var(--text-text-main);
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .article-page {
         padding: 0 0 2rem 0;

@@ -300,7 +300,6 @@
     color: var(--text-text-caption);
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .category-page-title {
         font-size: 32px;
@@ -338,7 +337,6 @@
     }
 }
 
-/* Intermediate breakpoint for larger tablets */
 @media (max-width: 1024px) {
     .category-content {
         flex-direction: column;

@@ -121,7 +121,6 @@
             });
         });
 
-        // Contact form validation and phone formatting
         const contactForm = document.getElementById('contactForm');
         const nameInput = document.getElementById('nameInput');
         const phoneInput = document.getElementById('phoneInput');
@@ -132,7 +131,6 @@
         const consentError = document.getElementById('consentError');
         const messageCharCount = document.getElementById('messageCharCount');
 
-        // Phone number formatting
         function formatPhoneNumber(value) {
             let digits = value.replace(/\D/g, '');
 
@@ -185,7 +183,6 @@
             validateField(phoneInput, phoneError, validatePhone);
         });
 
-        // Character count for message
         messageInput.addEventListener('input', function(e) {
             const currentLength = e.target.value.length;
             const maxLength = e.target.getAttribute('maxlength');
@@ -198,7 +195,6 @@
             }
         });
 
-        // Real-time validation
         nameInput.addEventListener('blur', function() {
             validateField(nameInput, nameError, validateName);
         });
@@ -211,7 +207,6 @@
             validateField(consentCheckbox, consentError, validateConsent);
         });
 
-        // Validation functions
         function validateName(value) {
             if (!value || value.length < 2) {
                 return 'Имя должно содержать минимум 2 символа';
@@ -264,7 +259,6 @@
             }
         }
 
-        // Form submission
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -274,7 +268,6 @@
                 const isConsentValid = validateField(consentCheckbox, consentError, validateConsent);
                 
                 if (isNameValid && isPhoneValid && isConsentValid) {
-                    // Form is valid, submit it
                     alert('Форма успешно отправлена!');
                     contactForm.reset();
                     messageCharCount.textContent = '0/500';
@@ -285,7 +278,6 @@
 
         window.openModal = openModal;
 
-        // Mobile menu functionality
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -312,7 +304,6 @@
             mobileMenuOverlay.addEventListener('click', closeMobileMenu);
         }
 
-        // Close menu on ESC key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && mobileNav.classList.contains('show')) {
                 closeMobileMenu();
