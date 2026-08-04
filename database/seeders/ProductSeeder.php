@@ -234,7 +234,10 @@ class ProductSeeder extends Seeder
             if (!isset($product['old_price'])) {
                 $product['old_price'] = round($product['price'] * 1.3, 2);
             }
-            Product::create($product);
+            Product::updateOrCreate(
+                ['slug' => $product['slug']],
+                $product
+            );
         }
     }
 }
