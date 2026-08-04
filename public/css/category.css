@@ -21,6 +21,7 @@
     letter-spacing: -3%;
     color: var(--text-text-main);
     margin-bottom: 2rem;
+    text-decoration: none;
 }
 
 .category-content {
