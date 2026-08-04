@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="/css/components/product-card.css">
-<link rel="stylesheet" href="/css/components/catalog-card.css">
-<link rel="stylesheet" href="/css/components/carousel.css">
-<link rel="stylesheet" href="/css/components/news-card.css">
-<link rel="stylesheet" href="/css/components/products-header.css">
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/components/product-card.css?v=2">
+<link rel="stylesheet" href="/css/components/catalog-card.css?v=2">
+<link rel="stylesheet" href="/css/components/carousel.css?v=2">
+<link rel="stylesheet" href="/css/components/news-card.css?v=2">
+<link rel="stylesheet" href="/css/components/products-header.css?v=2">
+<link rel="stylesheet" href="/css/home.css?v=2">
 
 <section class="hero">
     <div class="container">

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="/css/components/breadcrumbs.css">
-<link rel="stylesheet" href="/css/components/products-header.css">
-<link rel="stylesheet" href="/css/components/product-card.css">
-<link rel="stylesheet" href="/css/components/pagination.css">
-<link rel="stylesheet" href="/css/category.css">
+<link rel="stylesheet" href="/css/components/breadcrumbs.css?v=2">
+<link rel="stylesheet" href="/css/components/products-header.css?v=2">
+<link rel="stylesheet" href="/css/components/product-card.css?v=2">
+<link rel="stylesheet" href="/css/components/pagination.css?v=2">
+<link rel="stylesheet" href="/css/category.css?v=2">
 
 <div class="category-page">
     <div class="container">

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="/css/components/breadcrumbs.css">
-<link rel="stylesheet" href="/css/components/catalog-card.css">
-<link rel="stylesheet" href="/css/catalog.css">
+<link rel="stylesheet" href="/css/components/breadcrumbs.css?v=2">
+<link rel="stylesheet" href="/css/components/catalog-card.css?v=2">
+<link rel="stylesheet" href="/css/catalog.css?v=2">
 
 <div class="catalog-page">
     <div class="container">
