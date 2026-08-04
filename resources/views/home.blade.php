@@ -44,7 +44,7 @@
         </div>
         <div class="products-carousel">
             @foreach($products as $product)
-            <x-product-card :product="$product" />
+            <x-product-card :product="$product" :link="'/product/' . $product['id']" />
             @endforeach
         </div>
     </div>
