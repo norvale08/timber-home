@@ -18,6 +18,12 @@ COPY . .
 
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
+RUN touch database/database.sqlite
+
+RUN php artisan migrate --force
+
+RUN php artisan db:seed --force
+
 # Change Apache root to Laravel public folder
 RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
 

@@ -36,6 +36,29 @@ A Laravel 11 storefront for timber home products, categories, and editorial cont
 
 Open `http://127.0.0.1:8000`.
 
+## Docker
+
+Build and run:
+
+```powershell
+docker build -t timber-home .
+docker run -p 8080:80 timber-home
+```
+
+Open `http://localhost:8080`.
+
+The Dockerfile automatically creates the SQLite database, runs migrations, and seeds data during build.
+
+## Render deployment
+
+Set environment variable:
+
+```
+DB_CONNECTION=sqlite
+```
+
+Render will build the Docker image which includes the database setup.
+
 ## Pages
 
 | Path | Description |
