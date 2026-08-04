@@ -89,7 +89,6 @@
 
 .btn-hero {
     background-color: var(--text-text-main);
-    padding: 16px 32px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
